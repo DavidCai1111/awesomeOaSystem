@@ -1,0 +1,20 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "connect-flash": "*",
+    "connect-mongo": "*",
+    "ejs": "*",
+    "express": "3.18.3",
+    "fs-extra": "^0.17.0",
+    "moment": "^2.9.0",
+    "mongodb": "*",
+    "mongoose": "^3.8.24",
+    "multer": "^0.1.8",
+    "node-xlsx": "^0.5.1"
+  }
+}

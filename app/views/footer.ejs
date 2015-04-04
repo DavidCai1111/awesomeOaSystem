@@ -1,0 +1,34 @@
+    <script type="text/javascript" src="js/queryString.js"></script>
+         <script type="text/javascript">
+            //搜索框选择类型
+            $(".projTypeForSearch").each(function(e){
+                $(this).click(function(){
+                    $("#projTypeToSearch span").text($(this).text());
+                    $("#projTypeToSearch").attr("data-proj",$(this).attr("data-proj"));
+                });
+            });
+
+            //搜索
+            $("#searchProjByInfo").click(function(e){
+                e.preventDefault();
+                var projType = $("#projTypeToSearch").attr("data-proj");
+                var searchInfo = $("#search-fld").val();
+                location.href =  projType + "?q=" + searchInfo;
+            });
+
+            QueryString.Initial();
+
+            var deliverQty = QueryString.GetValue('q');
+
+            setTimeout(function(){
+                $("#datatable_col_reorder_filter input").val(deliverQty);
+
+                //模拟按键
+                var e = $.Event("keyup");
+                e.which = 40
+                $('#datatable_col_reorder_filter input').trigger(e);
+            },100);
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,994 @@
+<%- include header %>
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+    <!-- RIBBON -->
+    <div id="ribbon">
+
+        <span class="ribbon-button-alignment"> <span id="refresh" class="btn btn-ribbon" data-title="refresh"
+                                                     rel="tooltip" data-placement="bottom"
+                                                     data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings."
+                                                     data-html="true"><i class="fa fa-refresh"></i></span> </span>
+
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            <li>主页</li>
+            <li>用户管理</li>
+        </ol>
+        <!-- end breadcrumb -->
+
+        <!-- You can also add more buttons to the
+        ribbon for further usability
+
+        Example below:
+
+        <span class="ribbon-button-alignment pull-right">
+        <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+        <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+        <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+        </span> -->
+
+    </div>
+    <!-- END RIBBON -->
+
+    <!-- MAIN CONTENT -->
+    <div id="content">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+                <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> 主页 <span>> 用户管理</span>
+                </h1>
+            </div>
+            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+                <ul id="sparks" class="">
+                    <li class="sparks-info">
+                        <h5> 用户数 <span class="txt-color-blue">$47,171</span></h5>
+
+                        <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+                            1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+                        </div>
+                    </li>
+                    <li class="sparks-info">
+                        <h5> 在线用户数 <span class="txt-color-purple"><i class="fa fa-arrow-circle-up"></i>&nbsp;45%</span>
+                        </h5>
+
+                        <div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+                            110,150,300,130,400,240,220,310,220,300, 270, 210
+                        </div>
+                    </li>
+                    <li class="sparks-info">
+                        <h5> 在线百分比 <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span>
+                        </h5>
+
+                        <div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+                            110,150,300,130,400,240,220,310,220,300, 270, 210
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+
+            <!-- row -->
+            <div class="row">
+                <article class="col-sm-12">
+                    <!-- new widget -->
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-editbutton="false">
+                        <!-- widget options:
+                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                        data-widget-colorbutton="false"
+                        data-widget-editbutton="false"
+                        data-widget-togglebutton="false"
+                        data-widget-deletebutton="false"
+                        data-widget-fullscreenbutton="false"
+                        data-widget-custombutton="false"
+                        data-widget-collapsed="true"
+                        data-widget-sortable="false"
+
+                        -->
+
+
+                        <!-- widget div-->
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-user"></i> </span>
+
+                            <h2>用户管理 </h2>
+
+                        </header>
+
+
+                        <!-- 按钮区 BEGIN -->
+                        <div id="userControlButton" class="hidden">
+                            <div style="position: absolute;left: 200px;top:4px">
+                                <button id="new-user" data-toggle="modal" class="btn btn-default" href="#myModal"
+                                    style="position:relative">新增用户
+                                </button>
+                                <!--<button id="view-user" class="btn btn-default" href="javascript:void(0);"-->
+                                    <!--style="position:relative">详情-->
+                                <!--</button>-->
+                                <button id="delete-user" class="btn btn-default" href="javascript:void(0);"
+                                    style="position:relative">删除用户
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 按钮区 END -->
+
+                        <!-- 测试区 BEGIN -->
+
+                        <!-- 	<% users.forEach(function (user, index) { %>
+					  <p><h2><a href="#"><%= user.name %></a></h2></p>
+					  <p class="info">
+					    作者：<a href="#"><%= user.name %></a> | 
+					    密码：<a href="#"><%= user.password %></a> |
+					    邮箱：<%= user.email %>
+					  </p>
+					  <p><%- user.passwod %></p>
+					<% }) %> 
+				-->
+                        <!-- 测试区 END -->
+
+                        <!-- widget div-->
+                        <div>
+
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+                                <div class="widget-body-toolbar">
+
+                                </div>
+
+                                <table id="datatable_col_reorder" class="table table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th><input type="checkbox" name="selectAll"/></th>
+                                        <th>用户ID</th>
+                                        <th>用户名</th>
+                                        <th>联系电话</th>
+                                        <th>部门</th>
+                                        <th>邮箱</th>
+                                        <th>城市</th>
+                                        <th>创建日期</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <% users.forEach(function (user, index) { %>
+                                    <tr>
+                                        <td><input type="checkbox" name="selectOne" id="<%= user._id%>"/></td>
+                                        <td><%= index %></td>
+                                        <td><%if(user.name === null || user.name === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.name%>
+                                            <%}%></td>
+                                        <td><%if(user.phone === null || user.phone === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.phone%>
+                                            <%}%></td>
+                                        <td><%if(user.depart === null || user.depart === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.depart%>
+                                            <%}%>
+                                        </td>
+                                        <td><%if(user.email === null || user.email === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.email%>
+                                            <%}%></td>
+                                        <td><%if(user.city === null || user.city === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.city%>
+                                            <%}%></td>
+                                        <td><%if(user.date === null || user.date === undefined){%>
+                                            <!--留白，不显示-->
+                                            <%}else{ %>
+                                            <%= user.date%>
+                                            <%}%></td>
+                                        <td><a class="edit" data-toggle="modal"  href="#editModal" data-userId="<%= user._id%>">修改</a></td>
+                                    </tr>
+                                    <% }) %>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+                    </div>
+                    <!-- end widget -->
+
+                </article>
+            </div>
+
+            <!-- end row -->
+
+        </section>
+        <!-- end widget grid -->
+
+
+        <!-- Modal 弹出框 begin-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">
+                            新增用户
+                            <!--<img src="img/logo.png" width="150" alt="SmartAdmin">-->
+                        </h4>
+                    </div>
+                    <div class="modal-body no-padding">
+
+                        <form id="newuser-form" class="smart-form" method="post" action="/user">
+
+                            <fieldset>
+                                <section>
+                                    <div class="row">
+                                        <label class="label col col-2">用户名</label>
+
+                                        <div class="col col-10">
+                                            <label class="input"> <i class="icon-append fa fa-user"></i>
+                                                <input type="user" name="user">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="row">
+                                        <label class="label col col-2">密码</label>
+
+                                        <div class="col col-10">
+                                            <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                                <input type="password" name="password">
+                                            </label>
+                                            <!-- <div class="note">
+                                                <a href="javascript:void(0)">Forgot password?</a>
+                                            </div> -->
+                                        </div>
+
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="row">
+                                        <label class="label col col-2">确认密码</label>
+
+                                        <div class="col col-10">
+                                            <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                                <input type="password" name="vpassword">
+                                            </label>
+                                            <!-- <div class="note">
+                                                <a href="javascript:void(0)">Forgot password?</a>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="row">
+                                        <label class="label col col-2">邮箱</label>
+
+                                        <div class="col col-10">
+                                            <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+                                                <input type="email" name="email">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="row">
+                                        <label class="label col col-2">联系电话</label>
+
+                                        <div class="col col-10">
+                                            <label class="input"> <i class="icon-append fa fa-phone"></i>
+                                                <input type="phone" name="phone">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="row">
+                                        <label class="label col col-2">部门</label>
+
+                                        <div class="col col-10">
+                                            <label class="input"> <i class="icon-append fa fa-wrench"></i>
+                                                <input type="depart" name="depart">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="row">
+                                        <label class="label col col-2">城市</label>
+
+                                        <div class="col col-10">
+                                            <label class="input"> <i class="icon-append fa fa-map-marker"></i>
+                                                <input type="city" name="city">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!--<section>-->
+                                    <!--<div class="row">-->
+                                        <!--<label class="label col col-2">日期 </label>-->
+
+                                        <!--<div class="col col-10">-->
+                                            <!--<label class="input"> <i class="icon-append fa fa-calendar"></i>-->
+                                                <!--<input type="date" name="date">-->
+                                            <!--</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</section>-->
+
+
+                                <!--
+                                                                <section>
+                                                                    <div class="row">
+                                                                        <div class="col col-2"></div>
+                                                                        <div class="col col-10">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" name="remember" checked="">
+                                                                                <i></i>Keep me logged in</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </section> -->
+                            </fieldset>
+
+                            <footer>
+                                <button id="createUser" type="submit" class="btn btn-primary">
+                                    确认
+                                </button>
+                                <button id="cancelCreating" type="button" class="btn btn-default" data-dismiss="modal">
+                                    取消
+                                </button>
+
+                            </footer>
+                        </form>
+
+
+                    </div>
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 弹出框 END -->
+
+        <!-- 修改用户信息 Modal 弹出框 begin-->
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">
+                            修改用户信息
+                            <!--<img src="img/logo.png" width="150" alt="SmartAdmin">-->
+                        </h4>
+                    </div>
+                    <div class="modal-body no-padding">
+
+                        <form id="editUserForm" class="smart-form" method="post" action="/user/update">
+
+                            <input class="hidden" type="text" name="_id" value="">
+
+                            <fieldset>
+                                <section>
+                                    <div class="row">
+                                        <label class="label col col-2">用户名</label>
+
+                                        <div class="col col-10">
+                                            <label class="input"> <i class="icon-append fa fa-user"></i>
+                                                <input type="user" name="name">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!--<section>-->
+                                    <!--<div class="row">-->
+                                        <!--<label class="label col col-2">密码</label>-->
+
+                                        <!--<div class="col col-10">-->
+                                            <!--<label class="input"> <i class="icon-append fa fa-lock"></i>-->
+                                                <!--<input type="password" name="password">-->
+                                            <!--</label>-->
+                                            <!--&lt;!&ndash; <div class="note">-->
+                                                <!--<a href="javascript:void(0)">Forgot password?</a>-->
+                                            <!--</div> &ndash;&gt;-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</section>-->
+
+                                <!--<section>-->
+                                    <!--<div class="row">-->
+                                        <!--<label class="label col col-2">确认密码</label>-->
+
+                                        <!--<div class="col col-10">-->
+                                            <!--<label class="input"> <i class="icon-append fa fa-lock"></i>-->
+                                                <!--<input type="password" name="vpassword">-->
+                                            <!--</label>-->
+                                            <!--&lt;!&ndash; <div class="note">-->
+                                                <!--<a href="javascript:void(0)">Forgot password?</a>-->
+                                            <!--</div> &ndash;&gt;-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</section>-->
+
+                                <section>
+                                    <div class="row">
+                                        <label class="label col col-2">邮箱</label>
+
+                                        <div class="col col-10">
+                                            <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+                                                <input type="email" name="email">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="row">
+                                        <label class="label col col-2">联系电话</label>
+
+                                        <div class="col col-10">
+                                            <label class="input"> <i class="icon-append fa fa-phone"></i>
+                                                <input type="phone" name="phone">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="row">
+                                        <label class="label col col-2">部门</label>
+
+                                        <div class="col col-10">
+                                            <label class="input"> <i class="icon-append fa fa-wrench"></i>
+                                                <input type="depart" name="depart">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="row">
+                                        <label class="label col col-2">城市</label>
+
+                                        <div class="col col-10">
+                                            <label class="input"> <i class="icon-append fa fa-map-marker"></i>
+                                                <input type="city" name="city">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!--<section>-->
+                                    <!--<div class="row">-->
+                                        <!--<label class="label col col-2">日期 </label>-->
+
+                                        <!--<div class="col col-10">-->
+                                            <!--<label class="input"> <i class="icon-append fa fa-calendar"></i>-->
+                                                <!--<input type="date" name="date">-->
+                                            <!--</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</section>-->
+
+
+                                <!--
+                                                                <section>
+                                                                    <div class="row">
+                                                                        <div class="col col-2"></div>
+                                                                        <div class="col col-10">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" name="remember" checked="">
+                                                                                <i></i>Keep me logged in</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </section> -->
+                            </fieldset>
+
+                            <footer>
+                                <button id="editUser" type="submit" class="btn btn-primary">
+                                    确认
+                                </button>
+                                <button id="cancelEdit" type="button" class="btn btn-default" data-dismiss="modal">
+                                    取消
+                                </button>
+
+                            </footer>
+                        </form>
+
+
+                    </div>
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- 修改用户信息/.modal 弹出框 END -->
+
+    </div>
+    <!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->
+<!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
+Note: These tiles are completely responsive,
+you can add as many as you like
+-->
+<div id="shortcut">
+    <ul>
+        <li>
+            <a href="#inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i
+                            class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span>
+            </a>
+        </li>
+        <li>
+            <a href="#calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i
+                            class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
+        </li>
+        <li>
+            <a href="#gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i
+                            class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>
+        </li>
+        <li>
+            <a href="#invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i
+                            class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span>
+            </a>
+        </li>
+        <li>
+            <a href="#gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i
+                            class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>
+        </li>
+        <li>
+            <a href="/profile" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span
+                        class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
+        </li>
+    </ul>
+</div>
+<!-- END SHORTCUT AREA -->
+
+<!--================================================== -->
+
+<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+<script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>
+
+<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script> -->
+<script>
+    if (!window.jQuery) {
+        document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
+    }
+</script>
+
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> -->
+<script>
+    if (!window.jQuery.ui) {
+        document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+    }
+</script>
+
+<!-- JS TOUCH : include this plugin for mobile drag / drop touch events
+<script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
+
+<!-- BOOTSTRAP JS -->
+<script src="js/bootstrap/bootstrap.min.js"></script>
+
+<!-- CUSTOM NOTIFICATION -->
+<script src="js/notification/SmartNotification.min.js"></script>
+
+<!-- JARVIS WIDGETS -->
+<script src="js/smartwidgets/jarvis.widget.min.js"></script>
+
+<!-- EASY PIE CHARTS -->
+<script src="js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+
+<!-- SPARKLINES -->
+<script src="js/plugin/sparkline/jquery.sparkline.min.js"></script>
+
+<!-- JQUERY VALIDATE -->
+<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+
+<!-- JQUERY MASKED INPUT -->
+<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+<!-- JQUERY SELECT2 INPUT -->
+<script src="js/plugin/select2/select2.min.js"></script>
+
+<!-- JQUERY UI + Bootstrap Slider -->
+<script src="js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+
+<!-- browser msie issue fix -->
+<script src="js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+
+<!-- FastClick: For mobile devices -->
+<script src="js/plugin/fastclick/fastclick.js"></script>
+
+<!--[if IE 7]>
+
+<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+<![endif]-->
+
+<!-- Demo purpose only -->
+<script src="js/demo.js"></script>
+
+<!-- MAIN APP JS FILE -->
+<script src="js/app.js"></script>
+
+<!-- PAGE RELATED PLUGIN(S) -->
+<script src="js/plugin/datatables/jquery.dataTables-cust.min.js"></script>
+<script src="js/plugin/datatables/ColReorder.min.js"></script>
+<script src="js/plugin/datatables/FixedColumns.min.js"></script>
+<script src="js/plugin/datatables/ColVis.min.js"></script>
+<script src="js/plugin/datatables/ZeroClipboard.js"></script>
+<script src="js/plugin/datatables/media/js/TableTools.min.js"></script>
+<script src="js/plugin/datatables/DT_bootstrap.js"></script>
+
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+    $(document).ready(function () {
+
+        pageSetUp();
+
+        /*
+         * BASIC
+         */
+        $('#dt_basic').dataTable({
+            "sPaginationType": "bootstrap_full"
+        });
+
+        /* END BASIC */
+
+        /* Add the events etc before DataTables hides a column */
+        $("#datatable_fixed_column thead input").keyup(function () {
+            oTable.fnFilter(this.value, oTable.oApi._fnVisibleToColumnIndex(oTable.fnSettings(), $("thead input").index(this)));
+        });
+
+        $("#datatable_fixed_column thead input").each(function (i) {
+            this.initVal = this.value;
+        });
+        $("#datatable_fixed_column thead input").focus(function () {
+            if (this.className == "search_init") {
+                this.className = "";
+                this.value = "";
+            }
+        });
+        $("#datatable_fixed_column thead input").blur(function (i) {
+            if (this.value == "") {
+                this.className = "search_init";
+                this.value = this.initVal;
+            }
+        });
+
+
+        var oTable = $('#datatable_fixed_column').dataTable({
+            "sDom": "<'dt-top-row'><'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+            //"sDom" : "t<'row dt-wrapper'<'col-sm-6'i><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'>>",
+            "oLanguage": {
+                "sSearch": "Search all columns:"
+            },
+            "bSortCellsTop": true
+        });
+
+
+        /*
+         * COL ORDER
+         */
+        $('#datatable_col_reorder').dataTable({
+            "sPaginationType": "bootstrap",
+            "sDom": "R<'dt-top-row'Clf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+            "fnInitComplete": function (oSettings, json) {
+                $('.ColVis_Button').addClass('btn btn-default btn-sm').html('显示列 <i class="icon-arrow-down"></i>');
+            }
+        });
+
+        /* END COL ORDER */
+
+        /* TABLE TOOLS */
+        $('#datatable_tabletools').dataTable({
+            "sDom": "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+            "oTableTools": {
+                "aButtons": ["copy", "print", {
+                    "sExtends": "collection",
+                    "sButtonText": 'Save <span class="caret" />',
+                    "aButtons": ["csv", "xls", "pdf"]
+                }],
+                "sSwfPath": "js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf"
+            },
+            "fnInitComplete": function (oSettings, json) {
+                $(this).closest('#dt_table_tools_wrapper').find('.DTTT.btn-group').addClass('table_tools_group').children('a.btn').each(function () {
+                    $(this).addClass('btn-sm btn-default');
+                });
+            }
+        });
+
+        /* END TABLE TOOLS */
+
+        //在表格内添加用户管理按钮
+        $(".widget-body-toolbar").append($("#userControlButton").html());
+        $("#userControlButton").remove();
+
+        //全选(全不选)用户
+        $("input[name='selectAll']").change(function(e){
+            if($(this).prop("checked")){
+                $("input[name='selectOne']").each(function(){
+                    $(this).prop("checked", true);
+                });
+            }else{
+                $("input[name='selectOne']").each(function(){
+                    $(this).prop("checked", false);
+                });
+            }
+        })
+
+        //删除用户功能
+        $("#delete-user").click(function(e){
+            //获取所有选中要删除用户id的数组
+            var idsToDelete = [];
+            $("input[name='selectOne']:checked").each(function(){
+                idsToDelete.push($(this).attr("id"));
+            });
+            $.ajax({
+                type:"DELETE",
+                url:"/user",
+                contentType: 'application/json',
+                data: JSON.stringify(idsToDelete),
+                dataType:"json",
+                success:function(msg){
+                    if(msg.result === "delete success"){
+                        location.reload();
+                    }else{
+                        alert("删除失败");
+                    }
+                }
+            });
+        });
+
+        //向修改信息框中显示已有的信息
+        $(".edit").click(function(){
+            //获取用户id
+            var userToEdit = {};
+            userToEdit.id = $(this).attr("data-userId");
+            $.ajax({
+                type:"POST",
+                url:"/user/getById",
+                contentType: 'application/json',
+                data: JSON.stringify(userToEdit),
+                dataType:"json",
+                success:function(user){
+                    if(user !== null){
+                        $("#editUserForm input[name='_id']").val(userToEdit.id);
+                        $("#editUserForm input[name='name']").val(user.name);
+//                        $("#editUserForm input[name='password']").val(user.password);
+                        $("#editUserForm input[name='email']").val(user.email);
+                        $("#editUserForm input[name='phone']").val(user.phone);
+                        $("#editUserForm input[name='depart']").val(user.depart);
+                        $("#editUserForm input[name='city']").val(user.city);
+                    }
+                }
+            })
+        });
+
+        //退出修改框时清空内容
+        $("#editModal .close").click(function(){
+            $("#editUserForm input").each(function(){
+                $(this).val("");
+            });
+            clearErrInfo("editUserForm");
+        });
+        $("#cancelEdit").click(function(){
+            $("#editUserForm input").each(function(){
+                $(this).val("");
+            });
+            clearErrInfo("editUserForm");
+        });
+
+        //退出新增用户框时清空内容
+        $("#myModal .close").click(function(){
+            $("#newuser-form input").each(function(){
+                $(this).val("");
+            });
+            clearErrInfo("newuser-form");
+        });
+        $("#cancelCreating").click(function(){
+            $("#newuser-form input").each(function(){
+                $(this).val("");
+            });
+            clearErrInfo("newuser-form");
+        });
+
+        //新增用户框发送，验证
+        $("#createUser").click(function(e){
+            e.preventDefault();
+            //清除输入框内表单的错误信息
+            clearErrInfo("newuser-form");
+            //初始化user对象，验证输入
+            var formInfo = {},hasError = false;
+            formInfo.user = {};
+            formInfo.user.name = $("#newuser-form input[name='user']").val();
+            if(formInfo.user.name === ""){
+                hasError = true;
+                showErrInfo("newuser-form","user","用户名不能为空");
+            }
+            formInfo.user.password = $("#newuser-form input[name='password']").val();
+            formInfo.user.vpassword = $("#newuser-form input[name='vpassword']").val();
+            if(formInfo.user.password === ""){
+                hasError = true;
+                showErrInfo("newuser-form","password","密码不能为空");
+            }
+            if(formInfo.user.password !== formInfo.user.vpassword){
+                hasError = true;
+                showErrInfo("newuser-form","vpassword","密码输入不一致");
+            }
+            formInfo.user.email = $("#newuser-form input[name='email']").val();
+            formInfo.user.phone = $("#newuser-form input[name='phone']").val();
+            formInfo.user.depart = $("#newuser-form input[name='depart']").val();
+            formInfo.user.city = $("#newuser-form input[name='city']").val();
+            //检查表单是否有误，无误则发送请求
+            if(hasError === true){
+                return;
+            }else{
+                $.ajax({
+                    type:"POST",
+                    url:"/user",
+                    contentType: 'application/json',
+                    data: JSON.stringify(formInfo),
+                    dataType:"json",
+                    success:function(result){
+                        if(result.success === true){
+                            location.reload();
+                        }else{
+                            if(result.msg === "用户名已存在"){
+                                hasError = true;
+                                showErrInfo("newuser-form","user","用户名已存在");
+                            }
+                            if(result.msg === "两次输入的密码不一致"){
+                                hasError = true;
+                                showErrInfo("newuser-form","vpassword","两次输入的密码不一致");
+                            }
+                            if(result.msg === "数据存储出错"){
+                                alert("数据存储出错");
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        //修改用户信息框发送，验证
+        $("#editUser").click(function(e){
+            e.preventDefault();
+            //清除输入框内表单的错误信息
+            clearErrInfo("editUserForm");
+            //初始化user对象，验证输入
+            var formInfo = {},hasError = false;
+            formInfo.user = {};
+            formInfo.user.name = $("#editUserForm input[name='name']").val();
+            if(formInfo.user.name === ""){
+                hasError = true;
+                showErrInfo("editUserForm","name","用户名不能为空");
+            }
+            formInfo.user._id = $("#editUserForm input[name='_id']").val();
+            formInfo.user.email = $("#editUserForm input[name='email']").val();
+            formInfo.user.phone = $("#editUserForm input[name='phone']").val();
+            formInfo.user.depart = $("#editUserForm input[name='depart']").val();
+            formInfo.user.city = $("#editUserForm input[name='city']").val();
+            //检查表单是否有误，无误则发送请求
+            if(hasError === true){
+                return;
+            }else{
+                $.ajax({
+                    type:"POST",
+                    url:"/user/update",
+                    contentType: 'application/json',
+                    data: JSON.stringify(formInfo),
+                    dataType:"json",
+                    success:function(result){
+                        if(result.success === true){
+                            location.reload();
+                        }else{
+                            if(result.msg === "用户名已被占用"){
+                                hasError = true;
+                                showErrInfo("editUserForm","name","用户名已被占用");
+                            }
+                            if(result.msg === "数据存储出错"){
+                                alert("数据存储出错");
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        //输入框获得焦点时清除错误信息
+        $("#newuser-form input").each(function(){
+            var inputName = $(this).attr("name");
+            $(this).focus(function(){
+                clearErrInfoByInputName("newuser-form",inputName);
+            });
+        });
+        $("#editUserForm input").each(function(){
+            var inputName = $(this).attr("name");
+            $(this).focus(function(){
+                clearErrInfoByInputName("editUserForm",inputName);
+            });
+        });
+
+        //清除输入框内表单的错误信息
+        function clearErrInfo(formId){
+            $("#" + formId + " span[class*='err-info']").remove();
+            $("#" + formId + " input").each(function(){
+                $(this)
+                        .parent()
+                        .parent()
+                        .removeClass("has-error");
+            });
+        }
+        function clearErrInfoByInputName(formId,inputName){
+            $("#" + formId + " input[name='" + inputName + "']").each(function(){
+                $(this)
+                        .parent()
+                        .parent()
+                        .removeClass("has-error")
+                        .children(".err-info")
+                        .remove();
+            });
+        }
+
+        //展示输入框内表单的错误信息
+        function showErrInfo(formId,inputName,errInfo){
+            $("#" + formId + " input[name='" + inputName + "']")
+                    .parent()
+                    .parent()
+                    .addClass("has-error")
+                    .append('<span class="help-block err-info"><i class="fa fa-warning"></i>' + errInfo + '</span>');
+        }
+
+        //去除checkbox列的排序按钮
+        $("#datatable_col_reorder thead th input").parent().removeClass().unbind("click");
+        $("#datatable_col_reorder thead th").bind("click",function(){
+            $("#datatable_col_reorder thead th input").parent().removeClass();
+        });
+
+        //去除"显示列"中隐藏checkbox列的选项
+        $("button[class='ColVis_Button TableTools_Button ColVis_MasterButton btn btn-default btn-sm']").one("click",function(){
+            setTimeout(function(){
+                $("div[class='ColVis_collection TableTools_collection'] button:first-child").remove();
+            },100);
+        });
+
+    })
+
+</script>
+
+<%- include footer %>
