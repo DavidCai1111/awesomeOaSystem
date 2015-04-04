@@ -2,271 +2,277 @@
 <!-- MAIN PANEL -->
 <div id="main" role="main">
 
-    <!-- RIBBON -->
-    <div id="ribbon">
+	<!-- RIBBON -->
+	<div id="ribbon">
 
         <span class="ribbon-button-alignment"> <span id="refresh" class="btn btn-ribbon" data-title="refresh"
                                                      rel="tooltip" data-placement="bottom"
                                                      data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings."
                                                      data-html="true"><i class="fa fa-refresh"></i></span> </span>
 
-        <!-- breadcrumb -->
-        <ol class="breadcrumb">
-            <li>主页</li>
-            <li>个人信息</li>
-        </ol>
+		<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>主页</li>
+			<li>个人信息</li>
+		</ol>
 
-    </div>
-    <!-- END RIBBON -->
+	</div>
+	<!-- END RIBBON -->
 
-    <!-- MAIN CONTENT -->
-    <div id="content">
+	<!-- MAIN CONTENT -->
+	<div id="content">
 
-        <div class="row">
-            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-                <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> 主页 <span>> 个人信息</span>
-                </h1>
-            </div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> 主页 <span>> 个人信息</span>
+				</h1>
+			</div>
 
-        </div>
-
-
-        <div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false" role="widget" style="">
-            <!-- widget options:
-            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-            data-widget-colorbutton="false"
-            data-widget-editbutton="false"
-            data-widget-togglebutton="false"
-            data-widget-deletebutton="false"
-            data-widget-fullscreenbutton="false"
-            data-widget-custombutton="false"
-            data-widget-collapsed="true"
-            data-widget-sortable="false"
-
-            -->
-            <header role="heading">
-                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                <h2>个人信息 </h2>
-
-                <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span></header>
-
-            <!-- widget div-->
-            <div role="content">
-
-                <!-- widget edit box -->
-                <div class="jarviswidget-editbox">
-                    <!-- This area used as dropdown edit box -->
-
-                </div>
-                <!-- end widget edit box -->
-
-                <!-- widget content -->
-                <div class="widget-body no-padding">
-
-                    <form class="smart-form form-horizontal" id="userProfile">
-                        <header>
-                            个人信息修改 &nbsp;&nbsp;&nbsp; <span class="text-success"><%= info %></span>
-                        </header>
-
-                        <fieldset>
-
-                            <div class="row">
-                                <label class="label col col-1">用户名：</label>
-
-                                <div class="col col-6">
-                                    <label class="input"> <i class="icon-append fa fa-user"></i>
-                                        <input type="text" name="name"
-                                               value="<%if(user.name === null || user.name === undefined){%><%}else{ %><%= user.name%><%}%>">
-                                    </label>
-                                </div>
-
-                            </div>
-
-                            <br/>
-
-                        </fieldset>
+		</div>
 
 
-                        <fieldset>
-                            <div class="row">
+		<div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-colorbutton="false"
+		     data-widget-editbutton="false" data-widget-custombutton="false" role="widget" style="">
+			<!-- widget options:
+			usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
-                                <label class="label col col-1">当前头像：</label>
+			data-widget-colorbutton="false"
+			data-widget-editbutton="false"
+			data-widget-togglebutton="false"
+			data-widget-deletebutton="false"
+			data-widget-fullscreenbutton="false"
+			data-widget-custombutton="false"
+			data-widget-collapsed="true"
+			data-widget-sortable="false"
 
-                                <div class="col col-6">
-                                    <%if(user.hasPortrait === false || user.hasPortrait === undefined){%>
-                                    <img class="portrait" style="width: 40px;height: 40px" src="images/portrait/default.png" alt="当前头像"/>
-                                    <%}else{ %>
-                                    <img class="portrait" style="width: 40px;height: 40px" src="images/portrait/<%if(user._id === null || user._id === undefined){%><%}else{ %><%= user._id%><%}%>.png" alt="当前头像"/>
-                                    <%}%>
-                                </div>
+			-->
+			<header role="heading">
+				<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
 
-                            </div>
+				<h2>个人信息 </h2>
 
-                            <br/>
+				<span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span></header>
+
+			<!-- widget div-->
+			<div role="content">
+
+				<!-- widget edit box -->
+				<div class="jarviswidget-editbox">
+					<!-- This area used as dropdown edit box -->
+
+				</div>
+				<!-- end widget edit box -->
+
+				<!-- widget content -->
+				<div class="widget-body no-padding">
+
+					<form class="smart-form form-horizontal" id="userProfile">
+						<header>
+							个人信息修改 &nbsp;&nbsp;&nbsp; <span class="text-success"><%= info %></span>
+						</header>
+
+						<fieldset>
+
+							<div class="row">
+								<label class="label col col-1">用户名：</label>
+
+								<div class="col col-6">
+									<label class="input"> <i class="icon-append fa fa-user"></i>
+										<input type="text" name="name"
+										       value="<% if(user.name === null || user.name === undefined){ %> <% }else{ %> <%= user.name %> <% } %>">
+									</label>
+								</div>
+
+							</div>
+
+							<br/>
+
+						</fieldset>
 
 
-                            <div class="row">
+						<fieldset>
+							<div class="row">
 
-                                    <label class="label col col-1">上传头像：</label>
+								<label class="label col col-1">当前头像：</label>
 
-                                    <div class="col col-6">
-                                        <label class="input"> <i class="icon-append fa fa-file-o"></i>
+								<div class="col col-6">
+									<% if(user.hasPortrait === false || user.hasPortrait === undefined){ %>
+									<img class="portrait" style="width: 40px;height: 40px"
+									     src="images/portrait/default.png" alt="当前头像"/>
+									<% }else{ %>
+									<img class="portrait" style="width: 40px;height: 40px"
+									     src="images/portrait/<% if(user._id === null || user._id === undefined){ %> <% }else{ %> <%= user._id %> <% } %>.png"
+									     alt="当前头像"/>
+									<% } %>
+								</div>
 
-                                            <input type="file" name="<%if(user._id === null || user._id === undefined){%><%}else{ %><%= user._id%><%}%>" id="portraitToUpload">
-                                            <span id="uploadInfo"  style="padding-top:5px;display: inline-block"></span>
-                                        </label>
-                                        <span class="button pull-left" id="uploadPortrait" style="margin-left:0;margin-top: 5px">
+							</div>
+
+							<br/>
+
+
+							<div class="row">
+
+								<label class="label col col-1">上传头像：</label>
+
+								<div class="col col-6">
+									<label class="input"> <i class="icon-append fa fa-file-o"></i>
+
+										<input type="file"
+										       name="<% if(user._id === null || user._id === undefined){ %> <% }else{ %> <%= user._id %> <% } %>"
+										       id="portraitToUpload">
+										<span id="uploadInfo" style="padding-top:5px;display: inline-block"></span>
+									</label>
+                                        <span class="button pull-left" id="uploadPortrait"
+                                              style="margin-left:0;margin-top: 5px">
                                                 上传头像
                                         </span>
 
-                                    </div>
+								</div>
 
-                            </div>
+							</div>
 
-                            <br/>
+							<br/>
 
-                        </fieldset>
+						</fieldset>
 
-                        <fieldset>
+						<fieldset>
 
-                            <div class="row">
+							<div class="row">
 
-                                <label class="label col col-1">当前密码：</label>
+								<label class="label col col-1">当前密码：</label>
 
-                                <div class="col col-6">
-                                    <label class="input"> <i class="icon-append fa fa-lock"></i>
-                                        <input type="password" name="passwordNow">
-                                    </label>
-                                </div>
+								<div class="col col-6">
+									<label class="input"> <i class="icon-append fa fa-lock"></i>
+										<input type="password" name="passwordNow">
+									</label>
+								</div>
 
-                            </div>
+							</div>
 
-                            <br/>
-
-
-                            <div class="row">
-
-                                <label class="label col col-1">修改密码：</label>
-
-                                <div class="col col-6">
-                                    <label class="input"> <i class="icon-append fa fa-lock"></i>
-                                        <input type="password" name="newPassword">
-                                    </label>
-                                </div>
-
-                            </div>
-
-                            <br/>
-
-                            <div class="row">
-
-                                <label class="label col col-1">重复新密码：</label>
-
-                                <div class="col col-6">
-                                    <label class="input"> <i class="icon-append fa fa-lock"></i>
-                                        <input type="password" name="reNewPassword">
-                                    </label>
-                                </div>
-
-                            </div>
-
-                            <br/>
-
-                        </fieldset>
-
-                        <fieldset>
-                            <div class="row">
-
-                                <label class="label col col-1">email：</label>
-
-                                <div class="col col-6">
-                                    <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-                                        <input type="email" name="email"
-                                               value="<%if(user.email === null || user.email === undefined){%><%}else{ %><%= user.email%><%}%>">
-                                    </label>
-                                </div>
-
-                            </div>
-
-                            <br/>
-
-                            <div class="row">
-
-                                <label class="label col col-1">联系电话：</label>
-
-                                <div class="col col-6">
-                                    <label class="input"> <i class="icon-append fa fa-phone"></i>
-                                        <input type="text" name="phone"
-                                               value="<%if(user.phone === null || user.phone === undefined){%><%}else{ %><%= user.phone%><%}%>">
-                                    </label>
-                                </div>
-
-                            </div>
-
-                            <br/>
-
-                            <div class="row">
-
-                                <label class="label col col-1">部门：</label>
-
-                                <div class="col col-6">
-                                    <label class="input"> <i class="icon-append fa fa-wrench"></i>
-                                        <input type="text" name="depart"
-                                               value="<%if(user.depart === null || user.depart === undefined){%><%}else{ %><%= user.depart%><%}%>">
-                                    </label>
-                                </div>
-
-                            </div>
-
-                            <br/>
-
-                            <div class="row">
-
-                                <label class="label col col-1">城市：</label>
-
-                                <div class="col col-6">
-                                    <label class="input"> <i class="icon-append fa fa-map-marker"></i>
-                                        <input type="text" name="city"
-                                               value="<%if(user.city === null || user.city === undefined){%><%}else{ %><%= user.city%><%}%>">
-                                    </label>
-                                </div>
-
-                            </div>
-
-                            <br/>
-
-                            <input type="text" name="_id" class="hidden"
-                                   value="<%if(user._id === null || user._id === undefined){%><%}else{ %><%= user._id%><%}%>">
-                        </fieldset>
+							<br/>
 
 
-                        <footer>
+							<div class="row">
 
-                                <button type="submit" class="btn btn-primary" id="submitProfile">
-                                    提交
-                                </button>
-                                <button type="button" class="btn btn-default" id="cancel">
-                                    取消
-                                </button>
+								<label class="label col col-1">修改密码：</label>
 
-                        </footer>
+								<div class="col col-6">
+									<label class="input"> <i class="icon-append fa fa-lock"></i>
+										<input type="password" name="newPassword">
+									</label>
+								</div>
 
-                    </form>
+							</div>
 
-                </div>
-                <!-- end widget content -->
+							<br/>
 
-            </div>
-            <!-- end widget div -->
+							<div class="row">
 
-        </div>
+								<label class="label col col-1">重复新密码：</label>
+
+								<div class="col col-6">
+									<label class="input"> <i class="icon-append fa fa-lock"></i>
+										<input type="password" name="reNewPassword">
+									</label>
+								</div>
+
+							</div>
+
+							<br/>
+
+						</fieldset>
+
+						<fieldset>
+							<div class="row">
+
+								<label class="label col col-1">email：</label>
+
+								<div class="col col-6">
+									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+										<input type="email" name="email"
+										       value="<% if(user.email === null || user.email === undefined){ %> <% }else{ %> <%= user.email %> <% } %>">
+									</label>
+								</div>
+
+							</div>
+
+							<br/>
+
+							<div class="row">
+
+								<label class="label col col-1">联系电话：</label>
+
+								<div class="col col-6">
+									<label class="input"> <i class="icon-append fa fa-phone"></i>
+										<input type="text" name="phone"
+										       value="<% if(user.phone === null || user.phone === undefined){ %> <% }else{ %> <%= user.phone %> <% } %>">
+									</label>
+								</div>
+
+							</div>
+
+							<br/>
+
+							<div class="row">
+
+								<label class="label col col-1">部门：</label>
+
+								<div class="col col-6">
+									<label class="input"> <i class="icon-append fa fa-wrench"></i>
+										<input type="text" name="depart"
+										       value="<% if(user.depart === null || user.depart === undefined){ %> <% }else{ %> <%= user.depart %> <% } %>">
+									</label>
+								</div>
+
+							</div>
+
+							<br/>
+
+							<div class="row">
+
+								<label class="label col col-1">城市：</label>
+
+								<div class="col col-6">
+									<label class="input"> <i class="icon-append fa fa-map-marker"></i>
+										<input type="text" name="city"
+										       value="<% if(user.city === null || user.city === undefined){ %> <% }else{ %> <%= user.city %> <% } %>">
+									</label>
+								</div>
+
+							</div>
+
+							<br/>
+
+							<input type="text" name="_id" class="hidden"
+							       value="<% if(user._id === null || user._id === undefined){ %> <% }else{ %> <%= user._id %> <% } %>">
+						</fieldset>
 
 
+						<footer>
+
+							<button type="submit" class="btn btn-primary" id="submitProfile">
+								提交
+							</button>
+							<button type="button" class="btn btn-default" id="cancel">
+								取消
+							</button>
+
+						</footer>
+
+					</form>
+
+				</div>
+				<!-- end widget content -->
+
+			</div>
+			<!-- end widget div -->
+
+		</div>
 
 
-    </div>
-    <!-- END MAIN CONTENT -->
+	</div>
+	<!-- END MAIN CONTENT -->
 
 </div>
 <!-- END MAIN PANEL -->
@@ -275,34 +281,34 @@ Note: These tiles are completely responsive,
 you can add as many as you like
 -->
 <div id="shortcut">
-    <ul>
-        <li>
-            <a href="#inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i
-                            class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span>
-            </a>
-        </li>
-        <li>
-            <a href="#calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i
-                            class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
-        </li>
-        <li>
-            <a href="#gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i
-                            class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>
-        </li>
-        <li>
-            <a href="#invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i
-                            class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span>
-            </a>
-        </li>
-        <li>
-            <a href="#gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i
-                            class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>
-        </li>
-        <li>
-            <a href="/profile" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span
-                        class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
-        </li>
-    </ul>
+	<ul>
+		<li>
+			<a href="#inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i
+							class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span>
+			</a>
+		</li>
+		<li>
+			<a href="#calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i
+							class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
+		</li>
+		<li>
+			<a href="#gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i
+							class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>
+		</li>
+		<li>
+			<a href="#invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i
+							class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span>
+			</a>
+		</li>
+		<li>
+			<a href="#gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i
+							class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>
+		</li>
+		<li>
+			<a href="/profile" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span
+						class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
+		</li>
+	</ul>
 </div>
 <!-- END SHORTCUT AREA -->
 
@@ -314,16 +320,16 @@ you can add as many as you like
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script> -->
 <script>
-    if (!window.jQuery) {
-        document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
-    }
+	if (!window.jQuery) {
+		document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
+	}
 </script>
 
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> -->
 <script>
-    if (!window.jQuery.ui) {
-        document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
-    }
+	if (!window.jQuery.ui) {
+		document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+	}
 </script>
 
 <!-- JS TOUCH : include this plugin for mobile drag / drop touch events
@@ -387,264 +393,264 @@ you can add as many as you like
 
 <script type="text/javascript">
 
-    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+	// DO NOT REMOVE : GLOBAL FUNCTIONS!
 
-    $(document).ready(function () {
+	$(document).ready(function () {
 
-        pageSetUp();
+		pageSetUp();
 
-        /*
-         * BASIC
-         */
-        $('#dt_basic').dataTable({
-            "sPaginationType": "bootstrap_full"
-        });
+		/*
+		 * BASIC
+		 */
+		$('#dt_basic').dataTable({
+			"sPaginationType": "bootstrap_full"
+		});
 
-        /* END BASIC */
+		/* END BASIC */
 
-        /* Add the events etc before DataTables hides a column */
-        $("#datatable_fixed_column thead input").keyup(function () {
-            oTable.fnFilter(this.value, oTable.oApi._fnVisibleToColumnIndex(oTable.fnSettings(), $("thead input").index(this)));
-        });
+		/* Add the events etc before DataTables hides a column */
+		$("#datatable_fixed_column thead input").keyup(function () {
+			oTable.fnFilter(this.value, oTable.oApi._fnVisibleToColumnIndex(oTable.fnSettings(), $("thead input").index(this)));
+		});
 
-        $("#datatable_fixed_column thead input").each(function (i) {
-            this.initVal = this.value;
-        });
-        $("#datatable_fixed_column thead input").focus(function () {
-            if (this.className == "search_init") {
-                this.className = "";
-                this.value = "";
-            }
-        });
-        $("#datatable_fixed_column thead input").blur(function (i) {
-            if (this.value == "") {
-                this.className = "search_init";
-                this.value = this.initVal;
-            }
-        });
-
-
-        var oTable = $('#datatable_fixed_column').dataTable({
-            "sDom": "<'dt-top-row'><'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
-            //"sDom" : "t<'row dt-wrapper'<'col-sm-6'i><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'>>",
-            "oLanguage": {
-                "sSearch": "Search all columns:"
-            },
-            "bSortCellsTop": true
-        });
+		$("#datatable_fixed_column thead input").each(function (i) {
+			this.initVal = this.value;
+		});
+		$("#datatable_fixed_column thead input").focus(function () {
+			if (this.className == "search_init") {
+				this.className = "";
+				this.value = "";
+			}
+		});
+		$("#datatable_fixed_column thead input").blur(function (i) {
+			if (this.value == "") {
+				this.className = "search_init";
+				this.value = this.initVal;
+			}
+		});
 
 
-        /*
-         * COL ORDER
-         */
-        $('#datatable_col_reorder').dataTable({
-            "sPaginationType": "bootstrap",
-            "sDom": "R<'dt-top-row'Clf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
-            "fnInitComplete": function (oSettings, json) {
-                $('.ColVis_Button').addClass('btn btn-default btn-sm').html('显示列 <i class="icon-arrow-down"></i>');
-            }
-        });
-
-        /* END COL ORDER */
-
-        /* TABLE TOOLS */
-        $('#datatable_tabletools').dataTable({
-            "sDom": "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
-            "oTableTools": {
-                "aButtons": ["copy", "print", {
-                    "sExtends": "collection",
-                    "sButtonText": 'Save <span class="caret" />',
-                    "aButtons": ["csv", "xls", "pdf"]
-                }],
-                "sSwfPath": "js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf"
-            },
-            "fnInitComplete": function (oSettings, json) {
-                $(this).closest('#dt_table_tools_wrapper').find('.DTTT.btn-group').addClass('table_tools_group').children('a.btn').each(function () {
-                    $(this).addClass('btn-sm btn-default');
-                });
-            }
-        });
-
-        /* END TABLE TOOLS */
-
-        //标题修正
-        $("#gridTitle").text("个人信息");
-
-        //取消按钮功能，刷新页面
-        $("#cancel").click(function(){
-            location.href = "/profile";
-        });
-
-        //修改用户信息，验证
-        $("#submitProfile").click(function(e){
-            e.preventDefault();
-            //初始化user对象，验证输入
-            var formInfo = {},hasError = false;
-            formInfo.user = {};
-            formInfo.user._id = $("#userProfile input[name='_id']").val();
-            formInfo.user.name = $("#userProfile input[name='name']").val();
-            formInfo.user.email = $("#userProfile input[name='email']").val();
-            formInfo.user.phone = $("#userProfile input[name='phone']").val();
-            formInfo.user.depart = $("#userProfile input[name='depart']").val();
-            formInfo.user.city = $("#userProfile input[name='city']").val();
-            formInfo.user.passwordNow = $("#userProfile input[name='passwordNow']").val();
-            formInfo.user.newPassword = $("#userProfile input[name='newPassword']").val();
-            formInfo.user.reNewPassword = $("#userProfile input[name='reNewPassword']").val();
-            //若修改了密码，进行验证
-            if(formInfo.user.passwordNow !== ""){
-                if(formInfo.user.newPassword === ""){
-                    showErrInfo("userProfile","newPassword","新密码不能为空");
-                    hasError = true;
-                }
-                else if(formInfo.user.newPassword !== formInfo.user.reNewPassword){
-                    showErrInfo("userProfile","reNewPassword","两次输入的密码不一致 ");
-                    hasError = true;
-                }
-                else{
-                    //验证密码
-                    if(hasError === true){
-                        return;
-                    }else{
-                        $.ajax({
-                            type:"POST",
-                            url:"/profile/validatePassword",
-                            contentType: 'application/json',
-                            data: JSON.stringify(formInfo),
-                            dataType:"json",
-                            success:function(result){
-                                if(result.success === true){
-                                    //密码验证通过，更新用户信息
-                                    $.ajax({
-                                        type:"POST",
-                                        url:"/profile/update",
-                                        contentType: 'application/json',
-                                        data: JSON.stringify(formInfo),
-                                        dataType:"json",
-                                        success:function(result){
-                                            if(result.success === true){
-                                                location.href = "/profile?q=succeed";
-                                            }else{
-                                                if(result.msg === "用户名已被占用"){
-                                                    hasError = true;
-                                                    showErrInfo("userProfile","name","用户名已被占用");
-                                                }
-                                                if(result.msg === "数据存储出错"){
-                                                    hasError = true;
-                                                    alert("数据存储出错");
-                                                }
-                                            }
-                                        }
-                                    });
-                                }else{
-                                    if(result.msg === "验证不通过"){
-                                        hasError = true;
-                                        showErrInfo("userProfile","passwordNow","当前密码错误");
-                                    }
-                                    if(result.msg === "密码不能为空"){
-                                        hasError = true;
-                                        alert('密码不能为空');
-                                    }
-                                    if(result.msg === "数据库错误"){
-                                        alert("数据库错误");
-                                    }
-                                }
-                            }
-                        });
-                    }
-                }
-            }else{
-                //检查表单是否有误，无误则发送请求
-                if(hasError === true){
-                    return;
-                }else{
-                    $.ajax({
-                        type:"POST",
-                        url:"/profile/update",
-                        contentType: 'application/json',
-                        data: JSON.stringify(formInfo),
-                        success:function(result){
-                            if(result.success === true){
-                                location.href = "/profile?q=succeed";
-                            }else{
-                                if(result.msg === "用户名已被占用"){
-                                    hasError = true;
-                                    showErrInfo("userProfile","name","用户名已被占用");
-                                }
-                                if(result.msg === "数据存储出错"){
-                                    alert("数据存储出错");
-                                }
-                            }
-                        },
-                        error: function () {
-                            alert("数据存储出错");
-                        }
-                    });
-                }
-            }
-        });
-
-        //上传头像
-        $("#uploadPortrait").click(function (e) {
-            e.preventDefault();
-            $("#uploadInfo").removeClass();
-            $("#uploadInfo").text("上传中...");
-            $.ajaxFileUpload(
-                    {
-                        url: '/profile/uploadPortrait',
-                        secureuri: false,
-                        fileElementId: 'portraitToUpload',
-                        dataType:'json',
-                        success: function (result) {
-                            if(result === true){
-                                $("#uploadInfo").addClass("text-success");
-                                $("#uploadInfo").text("上传完毕");
-                                //刷新当前头像
-                                var _id = $("#userProfile input[name='_id']").val();
-                                $(".portrait").each(function () {
-                                    $(this).attr("src",("images/portrait/" + _id +".png?t=" + new Date().getTime()));
-                                });
-                            }else{
-                                $("#uploadInfo").addClass("text-warning");
-                                $("#uploadInfo").text("上传失败，请确保图片格式为png,jpg或jpeg");
-                            }
-                        },
-                        error: function () {
-                            alert("数据存储出错");
-                        }
-                    })
-        });
-
-        //清除输入框内表单的错误信息
-        function clearErrInfoByInputName(formId,inputName){
-            $("#" + formId + " input[name='" + inputName + "']").each(function(){
-                $(this)
-                        .parent()
-                        .parent()
-                        .removeClass("has-error")
-                        .children(".err-info")
-                        .remove();
-            });
-        }
-
-        //展示输入框内表单的错误信息
-        function showErrInfo(formId,inputName,errInfo){
-            $("#" + formId + " input[name='" + inputName + "']")
-                    .parent()
-                    .parent()
-                    .addClass("has-error")
-                    .append('<span class="help-block err-info"><i class="fa fa-warning"></i>' + errInfo + '</span>');
-        }
-
-        //输入框获得焦点时清除错误信息
-        $("#userProfile input").each(function(){
-            var inputName = $(this).attr("name");
-            $(this).focus(function(){
-                clearErrInfoByInputName("userProfile",inputName);
-            });
-        });
+		var oTable = $('#datatable_fixed_column').dataTable({
+			"sDom": "<'dt-top-row'><'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+			//"sDom" : "t<'row dt-wrapper'<'col-sm-6'i><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'>>",
+			"oLanguage": {
+				"sSearch": "Search all columns:"
+			},
+			"bSortCellsTop": true
+		});
 
 
-    })
+		/*
+		 * COL ORDER
+		 */
+		$('#datatable_col_reorder').dataTable({
+			"sPaginationType": "bootstrap",
+			"sDom": "R<'dt-top-row'Clf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+			"fnInitComplete": function (oSettings, json) {
+				$('.ColVis_Button').addClass('btn btn-default btn-sm').html('显示列 <i class="icon-arrow-down"></i>');
+			}
+		});
+
+		/* END COL ORDER */
+
+		/* TABLE TOOLS */
+		$('#datatable_tabletools').dataTable({
+			"sDom": "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+			"oTableTools": {
+				"aButtons": ["copy", "print", {
+					"sExtends": "collection",
+					"sButtonText": 'Save <span class="caret" />',
+					"aButtons": ["csv", "xls", "pdf"]
+				}],
+				"sSwfPath": "js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf"
+			},
+			"fnInitComplete": function (oSettings, json) {
+				$(this).closest('#dt_table_tools_wrapper').find('.DTTT.btn-group').addClass('table_tools_group').children('a.btn').each(function () {
+					$(this).addClass('btn-sm btn-default');
+				});
+			}
+		});
+
+		/* END TABLE TOOLS */
+
+		//标题修正
+		$("#gridTitle").text("个人信息");
+
+		//取消按钮功能，刷新页面
+		$("#cancel").click(function () {
+			location.href = "/profile";
+		});
+
+		//修改用户信息，验证
+		$("#submitProfile").click(function (e) {
+			e.preventDefault();
+			//初始化user对象，验证输入
+			var formInfo = {}, hasError = false;
+			formInfo.user = {};
+			formInfo.user._id = $("#userProfile input[name='_id']").val();
+			formInfo.user.name = $("#userProfile input[name='name']").val();
+			formInfo.user.email = $("#userProfile input[name='email']").val();
+			formInfo.user.phone = $("#userProfile input[name='phone']").val();
+			formInfo.user.depart = $("#userProfile input[name='depart']").val();
+			formInfo.user.city = $("#userProfile input[name='city']").val();
+			formInfo.user.passwordNow = $("#userProfile input[name='passwordNow']").val();
+			formInfo.user.newPassword = $("#userProfile input[name='newPassword']").val();
+			formInfo.user.reNewPassword = $("#userProfile input[name='reNewPassword']").val();
+			//若修改了密码，进行验证
+			if (formInfo.user.passwordNow !== "") {
+				if (formInfo.user.newPassword === "") {
+					showErrInfo("userProfile", "newPassword", "新密码不能为空");
+					hasError = true;
+				}
+				else if (formInfo.user.newPassword !== formInfo.user.reNewPassword) {
+					showErrInfo("userProfile", "reNewPassword", "两次输入的密码不一致 ");
+					hasError = true;
+				}
+				else {
+					//验证密码
+					if (hasError === true) {
+						return;
+					} else {
+						$.ajax({
+							type: "POST",
+							url: "/profile/validatePassword",
+							contentType: 'application/json',
+							data: JSON.stringify(formInfo),
+							dataType: "json",
+							success: function (result) {
+								if (result.success === true) {
+									//密码验证通过，更新用户信息
+									$.ajax({
+										type: "POST",
+										url: "/profile/update",
+										contentType: 'application/json',
+										data: JSON.stringify(formInfo),
+										dataType: "json",
+										success: function (result) {
+											if (result.success === true) {
+												location.href = "/profile?q=succeed";
+											} else {
+												if (result.msg === "用户名已被占用") {
+													hasError = true;
+													showErrInfo("userProfile", "name", "用户名已被占用");
+												}
+												if (result.msg === "数据存储出错") {
+													hasError = true;
+													alert("数据存储出错");
+												}
+											}
+										}
+									});
+								} else {
+									if (result.msg === "验证不通过") {
+										hasError = true;
+										showErrInfo("userProfile", "passwordNow", "当前密码错误");
+									}
+									if (result.msg === "密码不能为空") {
+										hasError = true;
+										alert('密码不能为空');
+									}
+									if (result.msg === "数据库错误") {
+										alert("数据库错误");
+									}
+								}
+							}
+						});
+					}
+				}
+			} else {
+				//检查表单是否有误，无误则发送请求
+				if (hasError === true) {
+					return;
+				} else {
+					$.ajax({
+						type: "POST",
+						url: "/profile/update",
+						contentType: 'application/json',
+						data: JSON.stringify(formInfo),
+						success: function (result) {
+							if (result.success === true) {
+								location.href = "/profile?q=succeed";
+							} else {
+								if (result.msg === "用户名已被占用") {
+									hasError = true;
+									showErrInfo("userProfile", "name", "用户名已被占用");
+								}
+								if (result.msg === "数据存储出错") {
+									alert("数据存储出错");
+								}
+							}
+						},
+						error: function () {
+							alert("数据存储出错");
+						}
+					});
+				}
+			}
+		});
+
+		//上传头像
+		$("#uploadPortrait").click(function (e) {
+			e.preventDefault();
+			$("#uploadInfo").removeClass();
+			$("#uploadInfo").text("上传中...");
+			$.ajaxFileUpload(
+					{
+						url: '/profile/uploadPortrait',
+						secureuri: false,
+						fileElementId: 'portraitToUpload',
+						dataType: 'json',
+						success: function (result) {
+							if (result === true) {
+								$("#uploadInfo").addClass("text-success");
+								$("#uploadInfo").text("上传完毕");
+								//刷新当前头像
+								var _id = $("#userProfile input[name='_id']").val();
+								$(".portrait").each(function () {
+									$(this).attr("src", ("images/portrait/" + _id + ".png?t=" + new Date().getTime()));
+								});
+							} else {
+								$("#uploadInfo").addClass("text-warning");
+								$("#uploadInfo").text("上传失败，请确保图片格式为png,jpg或jpeg");
+							}
+						},
+						error: function () {
+							alert("数据存储出错");
+						}
+					})
+		});
+
+		//清除输入框内表单的错误信息
+		function clearErrInfoByInputName(formId, inputName) {
+			$("#" + formId + " input[name='" + inputName + "']").each(function () {
+				$(this)
+						.parent()
+						.parent()
+						.removeClass("has-error")
+						.children(".err-info")
+						.remove();
+			});
+		}
+
+		//展示输入框内表单的错误信息
+		function showErrInfo(formId, inputName, errInfo) {
+			$("#" + formId + " input[name='" + inputName + "']")
+					.parent()
+					.parent()
+					.addClass("has-error")
+					.append('<span class="help-block err-info"><i class="fa fa-warning"></i>' + errInfo + '</span>');
+		}
+
+		//输入框获得焦点时清除错误信息
+		$("#userProfile input").each(function () {
+			var inputName = $(this).attr("name");
+			$(this).focus(function () {
+				clearErrInfoByInputName("userProfile", inputName);
+			});
+		});
+
+
+	})
 
 </script>
 

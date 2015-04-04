@@ -17,13 +17,13 @@ var citygovprojRoutes = require('./app/controllers/citygovproj');
 var app = express();
 
 //链接mongodb
-mongoose.connect(('mongodb://' + settings.host + ':27017/' + settings.db),{
-    user:"blogAdmin",
-    pass:"blogAdmin",
-    auth:{
-        user:"dbAdmin",
-        pass:"dbAdmin"
-    }
+mongoose.connect(('mongodb://' + settings.host + ':27017/' + settings.db), {
+	user: "?",
+	pass: "?",
+	auth: {
+		user: "?",
+		pass: "?"
+	}
 });
 
 // all environments
@@ -42,19 +42,19 @@ app.use(express.cookieParser());
 require('./config/multerConfig')(app);
 
 app.use(express.session({
-    secret: settings.cookieSecret,
-    key: settings.db,//cookie name
-    cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
-    store: new MongoStore({
-        db: settings.db
-    })
+	secret: settings.cookieSecret,
+	key: settings.db,//cookie name
+	cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
+	store: new MongoStore({
+		db: settings.db
+	})
 }));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-    app.use(express.errorHandler());
+	app.use(express.errorHandler());
 }
 
 //使用路由
@@ -66,5 +66,5 @@ citygovprojRoutes(app);
 profileRoutes(app);
 
 http.createServer(app).listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
+	console.log('Express server listening on port ' + app.get('port'));
 });
