@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "awesomeOaSystem",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,9 +8,12 @@
   "dependencies": {
     "connect-flash": "*",
     "connect-mongo": "*",
+    "dir-requirer": "^1.0.4",
     "ejs": "*",
+    "eventproxy": "^0.3.2",
     "express": "3.18.3",
     "fs-extra": "^0.17.0",
+    "lodash": "^3.6.0",
     "moment": "^2.9.0",
     "mongodb": "*",
     "mongoose": "^3.8.24",

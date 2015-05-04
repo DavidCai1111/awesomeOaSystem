@@ -3,30 +3,19 @@ var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(express);
-var settings = require('./settings');
 var flash = require('connect-flash');
-
-//路由
-var authRoutes = require('./app/controllers/auth');
-var profileRoutes = require('./app/controllers/profile');
-var userRoutes = require('./app/controllers/user');
-var engprojRoutes = require('./app/controllers/engproj');
-var netprojRoutes = require('./app/controllers/netproj');
-var citygovprojRoutes = require('./app/controllers/citygovproj');
-
+var dbConfig = require('./config/dbConfig');
 var app = express();
 
-//链接mongodb
-mongoose.connect(('mongodb://' + settings.host + ':27017/' + settings.db), {
-	user: "?",
-	pass: "?",
-	auth: {
-		user: "?",
-		pass: "?"
-	}
+mongoose.connect(('mongodb://' + dbConfig.host + ':27017/' + dbConfig.db), {
+  user: dbConfig.collectionUsername,
+  pass: dbConfig.collecttionPassword,
+  auth: {
+    user: dbConfig.dbUsername,
+    pass: dbConfig.dbPassword
+  }
 });
 
-// all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, '/app/views'));
 app.set('view engine', 'ejs');
@@ -42,29 +31,23 @@ app.use(express.cookieParser());
 require('./config/multerConfig')(app);
 
 app.use(express.session({
-	secret: settings.cookieSecret,
-	key: settings.db,//cookie name
-	cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
-	store: new MongoStore({
-		db: settings.db
-	})
+  secret: dbConfig.cookieSecret,
+  key: dbConfig.db,
+  cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30天
+  store: new MongoStore({
+    db: dbConfig.db
+  })
 }));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-// development only
 if ('development' == app.get('env')) {
-	app.use(express.errorHandler());
+  app.use(express.errorHandler());
 }
 
-//使用路由
-authRoutes(app);
-userRoutes(app);
-engprojRoutes(app);
-netprojRoutes(app);
-citygovprojRoutes(app);
-profileRoutes(app);
+//路由
+require('./web_route')(app);
 
 http.createServer(app).listen(app.get('port'), function () {
-	console.log('Express server listening on port ' + app.get('port'));
+  console.log('listening on port ' + app.get('port'));
 });

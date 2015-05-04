@@ -2,2090 +2,1083 @@
 <!-- MAIN PANEL -->
 <div id="main" role="main">
 
-	<!-- RIBBON -->
-	<div id="ribbon">
+  <!-- RIBBON -->
+  <div id="ribbon">
 
         <span class="ribbon-button-alignment"> <span id="refresh" class="btn btn-ribbon" data-title="refresh"
                                                      rel="tooltip" data-placement="bottom"
                                                      data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings."
                                                      data-html="true"><i class="fa fa-refresh"></i></span> </span>
 
-		<!-- breadcrumb -->
-		<ol class="breadcrumb">
-			<li>主页</li>
-			<li>网络部项目管理</li>
-		</ol>
+    <!-- breadcrumb -->
+    <ol class="breadcrumb">
+      <li>主页</li>
+      <li>网络部项目管理</li>
+    </ol>
 
-	</div>
-	<!-- END RIBBON -->
+  </div>
+  <!-- END RIBBON -->
 
-	<!-- MAIN CONTENT -->
-	<div id="content">
+  <!-- MAIN CONTENT -->
+  <div id="content">
 
-		<div class="row">
-			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> 主页 <span>> 网络部项目管理</span>
-				</h1>
-			</div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+        <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> 主页 <span>> 网络部项目管理</span>
+        </h1>
+      </div>
 
-		</div>
-		<!-- widget grid -->
-		<section id="widget-grid">
+    </div>
+    <!-- widget grid -->
+    <section id="widget-grid">
 
-			<!-- row -->
-			<div class="row">
-				<article class="col-sm-12">
-					<!-- new widget -->
-					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-editbutton="false">
-						<header>
-							<span class="widget-icon"> <i class="fa fa-lg fa-fw fa-signal"></i> </span>
+      <!-- row -->
+      <div class="row">
+        <article class="col-sm-12">
+          <!-- new widget -->
+          <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-editbutton="false">
+            <header>
+              <span class="widget-icon"> <i class="fa fa-lg fa-fw fa-signal"></i> </span>
 
-							<h2 id="gridTitle">网络部项目管理 </h2>
-						</header>
+              <h2 id="gridTitle">网络部项目管理 </h2>
+            </header>
 
-						<!-- 按钮区 BEGIN -->
-						<div id="ControlButton" class="hidden">
-							<div style="position: absolute;left: 200px;top:4px">
-								<button id="new-proj" data-toggle="modal" class="btn btn-default" href="#addProj"
-								        style="position:relative">新增网络部项目
-								</button>
-								<button id="delete-proj" class="btn btn-default" href="javascript:void(0);"
-								        style="position:relative">删除网络部项目
-								</button>
-								<a href="/netproj/getExcel">
-									<button id="exportToExcel" class="btn btn-default" href="javascript:void(0);"
-									        style="position:relative">导出此项目Excel
-									</button>
-								</a>
-							</div>
-						</div>
+            <!-- 按钮区 BEGIN -->
+            <div id="ControlButton" class="hidden">
+              <div style="position: absolute;left: 200px;top:4px">
+                <button id="new-proj" data-toggle="modal" class="btn btn-default" href="#addProj"
+                        style="position:relative">新增网络部项目
+                </button>
+                <button id="delete-proj" class="btn btn-default" href="javascript:void(0);"
+                        style="position:relative">删除网络部项目
+                </button>
+                <a href="/netproj/getExcel">
+                  <button id="exportToExcel" class="btn btn-default" href="javascript:void(0);"
+                          style="position:relative">导出此项目Excel
+                  </button>
+                </a>
+              </div>
+            </div>
 
-						<!-- 按钮区 END -->
+            <!-- 按钮区 END -->
 
-						<!-- widget div-->
-						<div>
-
-
-							<!-- widget edit box -->
-							<div class="jarviswidget-editbox">
-								<!-- This area used as dropdown edit box -->
-
-							</div>
-							<!-- end widget edit box -->
-
-							<!-- widget content -->
-							<div class="widget-body no-padding">
-								<div class="widget-body-toolbar">
-
-								</div>
-
-								<table id="datatable_col_reorder" class="table table-striped table-hover">
-									<thead>
-									<tr>
-										<th><input type="checkbox" name="selectAll"/></th>
-										<th>序号
-										</th>
-										<th>工单号
-										</th>
-										<th>甲方项目负责人
-										</th>
-										<th>乙方项目负责人
-										</th>
-										<th>项目属性
-										</th>
-										<th>项目类别
-										</th>
-										<th>实施原因
-										</th>
-										<th>项目名称
-										</th>
-										<th>工程地址
-										</th>
-										<th>所属区域
-										</th>
-										<th>操作
-										</th>
-									</tr>
-									</thead>
-									<tbody>
-									<% netprojs.forEach(function (netproj, index) { %>
-									<tr>
-										<td><input type="checkbox" name="selectOne" id="<%= netproj._id %>"/></td>
-										<!--  <td><%= index %></td> -->
-										<td>
-											<% if(netproj.basicInfo.serialno === null || netproj.basicInfo.serialno === undefined){ %>
-											<!--留白，不显示-->
-											<% }else{ %>
-											<%= netproj.basicInfo.serialno %>
-											<% } %>
-										</td>
-										<td>
-											<% if(netproj.basicInfo.billno === null || netproj.basicInfo.billno === undefined){ %>
-											<!--留白，不显示-->
-											<% }else{ %>
-											<%= netproj.basicInfo.billno %>
-											<% } %>
-										</td>
-										<td>
-											<% if(netproj.basicInfo.firstpartyofficer === null || netproj.basicInfo.firstpartyofficer === undefined){ %>
-											<!--留白，不显示-->
-											<% }else{ %>
-											<%= netproj.basicInfo.firstpartyofficer %>
-											<% } %>
-										</td>
-										<td>
-											<% if(netproj.basicInfo.secondpartyofficer === null || netproj.basicInfo.secondpartyofficer === undefined){ %>
-											<!--留白，不显示-->
-											<% }else{ %>
-											<%= netproj.basicInfo.secondpartyofficer %>
-											<% } %>
-										</td>
-										<td>
-											<% if(netproj.basicInfo.properties === null || netproj.basicInfo.properties === undefined){ %>
-											<!--留白，不显示-->
-											<% }else{ %>
-											<%= netproj.basicInfo.properties %>
-											<% } %>
-										</td>
-										<td>
-											<% if(netproj.basicInfo.projtype === null || netproj.basicInfo.projtype === undefined){ %>
-											<!--留白，不显示-->
-											<% }else{ %>
-											<%= netproj.basicInfo.projtype %>
-											<% } %>
-										</td>
-										<td>
-											<% if(netproj.basicInfo.reason === null || netproj.basicInfo.reason === undefined){ %>
-											<!--留白，不显示-->
-											<% }else{ %>
-											<%= netproj.basicInfo.reason %>
-											<% } %>
-										</td>
-										<td>
-											<% if(netproj.basicInfo.name === null || netproj.basicInfo.name === undefined){ %>
-											<!--留白，不显示-->
-											<% }else{ %>
-											<%= netproj.basicInfo.name %>
-											<% } %>
-										</td>
-										<td>
-											<% if(netproj.basicInfo.address === null || netproj.basicInfo.address === undefined){ %>
-											<!--留白，不显示-->
-											<% }else{ %>
-											<%= netproj.basicInfo.address %>
-											<% } %>
-										</td>
-										<td>
-											<% if(netproj.basicInfo.area === null || netproj.basicInfo.area === undefined){ %>
-											<!--留白，不显示-->
-											<% }else{ %>
-											<%= netproj.basicInfo.area %>
-											<% } %>
-										</td>
-										<td><a class="edit" data-toggle="modal" href="#editProj"
-										       data-projId="<%= netproj._id %>">详情</a></td>
-									</tr>
-									<% }) %>
-									</tbody>
-								</table>
-
-							</div>
-							<!-- end widget content -->
-
-						</div>
-						<!-- end widget div -->
-					</div>
-					<!-- end widget -->
-
-				</article>
-			</div>
-
-			<!-- end row -->
-
-		</section>
-		<!-- end widget grid -->
+            <!-- widget div-->
+            <div>
 
 
-		<!-- Modal 弹出框 begin-->
-		<div class="modal fade" id="addProj" tabindex="-1" role="dialog widget">
-			<div class="modal-dialog">
-				<!-- widget grid -->
-				<section id="widget-grid" class="modal-content">
-					<!-- row -->
-					<div class="row">
-						<!-- NEW WIDGET START -->
-						<article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
-							<!-- Widget ID (each widget will need unique ID)-->
-							<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
-							     data-widget-editbutton="false" data-widget-deletebutton="false" style="
+              <!-- widget edit box -->
+              <div class="jarviswidget-editbox">
+                <!-- This area used as dropdown edit box -->
+
+              </div>
+              <!-- end widget edit box -->
+
+              <!-- widget content -->
+              <div class="widget-body no-padding">
+                <div class="widget-body-toolbar">
+
+                </div>
+
+                <table id="datatable_col_reorder" class="table table-striped table-hover">
+                  <thead>
+                  <tr>
+                    <th><input type="checkbox" name="selectAll"/></th>
+                    <th>序号
+                    </th>
+                    <th>工单号
+                    </th>
+                    <th>甲方项目负责人
+                    </th>
+                    <th>乙方项目负责人
+                    </th>
+                    <th>项目属性
+                    </th>
+                    <th>项目类别
+                    </th>
+                    <th>实施原因
+                    </th>
+                    <th>项目名称
+                    </th>
+                    <th>工程地址
+                    </th>
+                    <th>所属区域
+                    </th>
+                    <th>操作
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% netprojs.forEach(function (netproj, index) { %>
+                  <tr>
+                    <td><input type="checkbox" name="selectOne" id="<%= netproj._id %>"/></td>
+                    <!--  <td><%= index %></td> -->
+                    <td>
+                      <% if(netproj.basicInfo.serialno === null || netproj.basicInfo.serialno === undefined){ %>
+                      <!--留白，不显示-->
+                      <% }else{ %>
+                      <%= netproj.basicInfo.serialno %>
+                      <% } %>
+                    </td>
+                    <td>
+                      <% if(netproj.basicInfo.billno === null || netproj.basicInfo.billno === undefined){ %>
+                      <!--留白，不显示-->
+                      <% }else{ %>
+                      <%= netproj.basicInfo.billno %>
+                      <% } %>
+                    </td>
+                    <td>
+                      <% if(netproj.basicInfo.firstpartyofficer === null || netproj.basicInfo.firstpartyofficer === undefined){ %>
+                      <!--留白，不显示-->
+                      <% }else{ %>
+                      <%= netproj.basicInfo.firstpartyofficer %>
+                      <% } %>
+                    </td>
+                    <td>
+                      <% if(netproj.basicInfo.secondpartyofficer === null || netproj.basicInfo.secondpartyofficer === undefined){ %>
+                      <!--留白，不显示-->
+                      <% }else{ %>
+                      <%= netproj.basicInfo.secondpartyofficer %>
+                      <% } %>
+                    </td>
+                    <td>
+                      <% if(netproj.basicInfo.properties === null || netproj.basicInfo.properties === undefined){ %>
+                      <!--留白，不显示-->
+                      <% }else{ %>
+                      <%= netproj.basicInfo.properties %>
+                      <% } %>
+                    </td>
+                    <td>
+                      <% if(netproj.basicInfo.projtype === null || netproj.basicInfo.projtype === undefined){ %>
+                      <!--留白，不显示-->
+                      <% }else{ %>
+                      <%= netproj.basicInfo.projtype %>
+                      <% } %>
+                    </td>
+                    <td>
+                      <% if(netproj.basicInfo.reason === null || netproj.basicInfo.reason === undefined){ %>
+                      <!--留白，不显示-->
+                      <% }else{ %>
+                      <%= netproj.basicInfo.reason %>
+                      <% } %>
+                    </td>
+                    <td>
+                      <% if(netproj.basicInfo.name === null || netproj.basicInfo.name === undefined){ %>
+                      <!--留白，不显示-->
+                      <% }else{ %>
+                      <%= netproj.basicInfo.name %>
+                      <% } %>
+                    </td>
+                    <td>
+                      <% if(netproj.basicInfo.address === null || netproj.basicInfo.address === undefined){ %>
+                      <!--留白，不显示-->
+                      <% }else{ %>
+                      <%= netproj.basicInfo.address %>
+                      <% } %>
+                    </td>
+                    <td>
+                      <% if(netproj.basicInfo.area === null || netproj.basicInfo.area === undefined){ %>
+                      <!--留白，不显示-->
+                      <% }else{ %>
+                      <%= netproj.basicInfo.area %>
+                      <% } %>
+                    </td>
+                    <td><a class="edit" data-toggle="modal" href="#editProj" data-projId="<%= netproj._id %>">详情</a>
+                    </td>
+                  </tr>
+                  <% }) %>
+                  </tbody>
+                </table>
+
+              </div>
+              <!-- end widget content -->
+
+            </div>
+            <!-- end widget div -->
+          </div>
+          <!-- end widget -->
+
+        </article>
+      </div>
+
+      <!-- end row -->
+
+    </section>
+    <!-- end widget grid -->
+
+
+    <!-- Modal 弹出框 begin-->
+    <div class="modal fade" id="addProj" tabindex="-1" role="dialog widget">
+      <div class="modal-dialog">
+        <!-- widget grid -->
+        <section id="widget-grid" class="modal-content">
+          <!-- row -->
+          <div class="row">
+            <!-- NEW WIDGET START -->
+            <article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+              <!-- Widget ID (each widget will need unique ID)-->
+              <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false"
+                   data-widget-deletebutton="false" style="
     margin-bottom: 0px;">
-								<!-- widget options:
-								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-								data-widget-colorbutton="false"
-								data-widget-editbutton="false"
-								data-widget-togglebutton="false"
-								data-widget-deletebutton="false"
-								data-widget-fullscreenbutton="false"
-								data-widget-custombutton="false"
-								data-widget-collapsed="true"
-								data-widget-sortable="false"
-
-								-->
-								<header>
-									<div class="jarviswidget-ctrls" role="menu">
-										<a href="javascript:void(0);"
-										   class="button-icon jarviswidget-delete-btn closeBtn" rel="tooltip" title=""
-										   data-placement="bottom" data-original-title="close" data-dismiss="modal"><i
-													class="fa fa-times"></i></a>
-									</div>
-									<h2>新增网络部项目 </h2>
-								</header>
-
-								<!-- widget div-->
-								<div>
-
-									<!-- widget edit box -->
-									<div class="jarviswidget-editbox">
-										<!-- This area used as dropdown edit box -->
-
-									</div>
-									<!-- end widget edit box -->
-
-									<!-- widget content -->
-									<div class="widget-body">
-
-										<div class="row">
-											<form id="wizard-1" novalidate="novalidate">
-												<div id="bootstrap-wizard-1" class="col-sm-12">
-													<div class="form-bootstrapWizard">
-
-														<ul class="bootstrapWizard form-wizard">
-															<li class="active" data-target="#step1"
-															    style="padding-right: 0;padding-left: 0;width: 50%">
-																<a href="#tab1" data-toggle="tab"> <span
-																			class="step">1</span> <span class="title">基本信息</span>
-																</a>
-															</li>
-															<li data-target="#step2"
-															    style="padding-right: 0;padding-left: 0;width: 50%">
-																<a href="#tab2" data-toggle="tab"> <span
-																			class="step">2</span> <span class="title">收入信息</span>
-																</a>
-															</li>
-														</ul>
-
-														<div class="clearfix"></div>
-													</div>
-													<div class="tab-content">
-														<div class="tab-pane active" id="tab1">
-															<br>
-
-															<h3><strong> 1 </strong> - 基本信息</h3>
-
-															<fieldset>
-
-																<div class="form-group hidden">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">序号：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-
-																				<div>
-																					<input class="form-control"
-																					       placeholder="序号" type="text"
-																					       name="serialno">
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">工单号：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-
-																				<div>
-																					<input class="form-control"
-																					       placeholder="工单号" type="text"
-																					       name="billno">
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2">甲方项目负责人：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-
-																				<div>
-																					<input class="form-control"
-																					       placeholder="甲方项目负责人"
-																					       type="text"
-																					       name="firstpartyofficer">
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2">乙方项目负责人：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-
-																				<div>
-																					<input class="form-control"
-																					       placeholder="乙方项目负责人"
-																					       type="text"
-																					       name="secondpartyofficer">
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">项目属性：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<label class="select">
-																						<select class="input-sm"
-																						        name="properties">
-																							<option value="管道">管道
-																							</option>
-																							<option value="光缆">光缆
-																							</option>
-																							<option value="设备">设备
-																							</option>
-																							<option value="客户端">客户端
-																							</option>
-																						</select> <i></i> </label>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">项目类别：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<label class="select">
-																						<select class="input-sm"
-																						        name="projtype">
-																							<option value="抢修">抢修
-																							</option>
-																							<option value="大修">大修
-																							</option>
-																							<option value="小修">小修
-																							</option>
-																						</select> <i></i> </label>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">实施原因：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<input class="form-control"
-																					       placeholder="实施原因"
-																					       type="text" name="reason">
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">项目名称：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<input class="form-control"
-																					       placeholder="项目名称"
-																					       type="text" name="name">
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">工程地址：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<input class="form-control"
-																					       placeholder="工程地址"
-																					       type="text" name="address">
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">所属区域：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<label class="select">
-																						<select class="input-sm"
-																						        name="area">
-																							<option value="黄浦">黄浦
-																							</option>
-																							<option value="卢湾">卢湾
-																							</option>
-																							<option value="徐汇">徐汇
-																							</option>
-																							<option value="长宁">长宁
-																							</option>
-																							<option value="静安">静安
-																							</option>
-																							<option value="普陀">普陀
-																							</option>
-																							<option value="闸北">闸北
-																							</option>
-																							<option value="虹口">虹口
-																							</option>
-																							<option value="杨浦">杨浦
-																							</option>
-																							<option value="宝山">宝山
-																							</option>
-																							<option value="嘉定">嘉定
-																							</option>
-																							<option value="浦东新区">浦东新区
-																							</option>
-																							<option value="松江">松江
-																							</option>
-																							<option value="金山">金山
-																							</option>
-																							<option value="青浦">青浦
-																							</option>
-																							<option value="南汇">南汇
-																							</option>
-																							<option value="奉贤">奉贤
-																							</option>
-																							<option value="崇明">崇明
-																							</option>
-																						</select> <i></i> </label>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">施工队：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<label class="select">
-																						<select class="input-sm"
-																						        name="constrctteam">
-																							<option value="中邮通">中邮通
-																							</option>
-																							<option value="中移">中移
-																							</option>
-																							<option value="邮电">邮电
-																							</option>
-																							<option value="广越">广越
-																							</option>
-																							<option value="东冠">东冠
-																							</option>
-																							<option value="和勤">和勤
-																							</option>
-																							<option value="电信">电信
-																							</option>
-																							<option value="久豪">久豪
-																							</option>
-																							<option value="贝电">贝电
-																							</option>
-																							<option value="海润">海润
-																							</option>
-																							<option value="中通二局">中通二局
-																							</option>
-																							<option value="翔发">翔发
-																							</option>
-																							<option value="辉程">辉程
-																							</option>
-																							<option value="龙盛">龙盛
-																							</option>
-																							<option value="明嬴">明嬴
-																							</option>
-																							<option value="盛脉">盛脉
-																							</option>
-																							<option value="通福">通福
-																							</option>
-																							<option value="万程">万程
-																							</option>
-																							<option value="信辰">信辰
-																							</option>
-																							<option value="远鹰">远鹰
-																							</option>
-																							<option value="阅龙">阅龙
-																							</option>
-																							<option value="置诚">置诚
-																							</option>
-																							<option value="兆康">兆康
-																							</option>
-																							<option value="兴霸">兴霸
-																							</option>
-																							<option value="和联">和联
-																							</option>
-																							<option value="鸿维">鸿维
-																							</option>
-																							<option value="嘉正">嘉正
-																							</option>
-																							<option value="炜晟">炜晟
-																							</option>
-																							<option value="新周">新周
-																							</option>
-																							<option value="信潮">信潮
-																							</option>
-																							<option value="众托">众托
-																							</option>
-																							<option value="共联">共联
-																							</option>
-																							<option value="中福">中福
-																							</option>
-																							<option value="长安">长安
-																							</option>
-																							<option value="都顺">都顺
-																							</option>
-																							<option value="联音">联音
-																							</option>
-																							<option value="商美">商美
-																							</option>
-																							<option value="英得">英得
-																							</option>
-																							<option value="亚通">亚通
-																							</option>
-																							<option value="邮顺">邮顺
-																							</option>
-																							<option value="渝华">渝华
-																							</option>
-																							<option value="忠吕">忠吕
-																							</option>
-																							<option value="中铁">中铁
-																							</option>
-																							<option value="天达">天达
-																							</option>
-																							<option value="虹鹰">虹鹰
-																							</option>
-																							<option value="兴和">兴和
-																							</option>
-																							<option value="云沪">云沪
-																							</option>
-																							<option value="雨花">雨花
-																							</option>
-																							<option value="晟平">晟平
-																							</option>
-																							<option value="秦禧">秦禧
-																							</option>
-																							<option value="立天">立天
-																							</option>
-																							<option value="中通一局">中通一局
-																							</option>
-																							<option value="博索">博索
-																							</option>
-																							<option value="富悦">富悦
-																							</option>
-																							<option value="廉创">廉创
-																							</option>
-																							<option value="润风">润风
-																							</option>
-																							<option value="海剑">海剑
-																							</option>
-																							<option value="宏晋">宏晋
-																							</option>
-																							<option value="米赛">米赛
-																							</option>
-																							<option value="伟琳">伟琳
-																							</option>
-																							<option value="骥通">骥通
-																							</option>
-																							<option value="北京工程局">
-																								北京工程局
-																							</option>
-																							<option value="景合">景合
-																							</option>
-																							<option value="海缆">海缆
-																							</option>
-																							<option value="煜菱">煜菱
-																							</option>
-																							<option value="鸿达">鸿达
-																							</option>
-																						</select> <i></i> </label>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2">施工队负责人：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<input class="form-control"
-																					       placeholder="施工队负责人"
-																					       type="text"
-																					       name="constrctofficer">
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">委托时间：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div class="input-group">
-																					<input type="text"
-																					       class="form-control"
-																					       placeholder="年/月/日"
-																					       data-mask="9999/99/99"
-																					       data-mask-placeholder="-"
-																					       name="consigntime">
-																					<span class="input-group-addon"><i
-																								class="fa fa-calendar"></i></span>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">立项情况：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<label class="select">
-																						<select class="input-sm"
-																						        name="situation">
-																							<option value="未开工">未开工
-																							</option>
-																							<option value="在建">在建
-																							</option>
-																							<option value="完工">完工
-																							</option>
-																							<option value="受阻">受阻
-																							</option>
-																							<option value="无法实施">无法实施
-																							</option>
-																							<option value="传输已达">传输已达
-																							</option>
-																							<option value="地址错误">地址错误
-																							</option>
-																						</select> <i></i> </label>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">开工时间：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div class="input-group">
-																					<input type="text"
-																					       class="form-control"
-																					       placeholder="年/月/日"
-																					       data-mask="9999/99/99"
-																					       data-mask-placeholder="-"
-																					       name="constructbegintime">
-																					<span class="input-group-addon"><i
-																								class="fa fa-calendar"></i></span>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">完工时间：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div class="input-group">
-																					<input type="text"
-																					       class="form-control"
-																					       placeholder="年/月/日"
-																					       data-mask="9999/99/99"
-																					       data-mask-placeholder="-"
-																					       name="finishtime">
-																					<span class="input-group-addon"><i
-																								class="fa fa-calendar"></i></span>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2">竣工图纸收到日期（附件）：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div class="input-group">
-																					<input type="text"
-																					       class="form-control"
-																					       placeholder="年/月/日"
-																					       data-mask="9999/99/99"
-																					       data-mask-placeholder="-"
-																					       name="textreceivetime">
-																					<span class="input-group-addon"><i
-																								class="fa fa-calendar"></i></span>
-																				</div>
-																				<span class="text-muted">附件，请在新增后上传</span>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2">甲方验收情况：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<input class="form-control"
-																					       placeholder="甲方验收情况"
-																					       type="text"
-																					       name="firstpartyacptstatus">
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2">送审日期（附件）：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div class="input-group">
-																					<input type="text"
-																					       class="form-control"
-																					       placeholder="年/月/日"
-																					       data-mask="9999/99/99"
-																					       data-mask-placeholder="-"
-																					       name="inspecttime">
-																					<span class="input-group-addon"><i
-																								class="fa fa-calendar"></i></span>
-																				</div>
-																				<span class="text-muted">附件，请在新增后上传</span>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">备注：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<textarea rows="5" name="basiccomments"
-																				          placeholder="备注"
-																				          class="form-control"
-																				          class="custom-scroll "
-																				          style="resize: none;"></textarea>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-															</fieldset>
-
-														</div>
-														<div class="tab-pane" id="tab2">
-															<br>
-
-															<h3><strong> 2</strong> - 收入信息</h3>
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">预算：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit"
-																				       placeholder="预算" type="text"
-																				       name="budget">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">结算：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit"
-																				       placeholder="结算" type="text"
-																				       name="clearing">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2">开票金额（附件）：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit"
-																				       placeholder="开票金额（附件）"
-																				       type="text" name="voiceamount">
-																			</div>
-																			<span class="text-muted">附件，请在新增后上传</span>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">实际收款：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit income"
-																				       placeholder="实际收款" type="text"
-																				       name="income">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">施工队结款：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit outcome"
-																				       placeholder="施工队结款" type="text"
-																				       name="outcome">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2">施工队工作量表格：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control"
-																				       placeholder="施工队工作量表格"
-																				       type="text" name="worktable">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">其他费用：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit otherfee"
-																				       placeholder="其他费用" type="text"
-																				       name="otherfee">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">利润：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit profit"
-																				       placeholder="利润" type="text"
-																				       name="profit">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">备注：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<textarea rows="5" name="incomecomments"
-																			          placeholder="备注"
-																			          class="form-control"
-																			          class="custom-scroll "
-																			          style="resize: none;"></textarea>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-
-														</div>
-														<div class="form-actions">
-															<div class="row">
-																<footer>
-																	<button type="submit" class="btn btn-primary"
-																	        id="saveProj">
-																		提交
-																	</button>
-																	<button type="button"
-																	        class="btn btn-default closeBtn"
-																	        data-dismiss="modal">
-																		取消
-																	</button>
-																</footer>
-															</div>
-														</div>
-
-													</div>
-												</div>
-											</form>
-										</div>
-
-									</div>
-									<!-- end widget content -->
-
-								</div>
-								<!-- end widget div -->
-
-							</div>
-							<!-- end widget -->
-
-						</article>
-						<!-- WIDGET END -->
-
-					</div>
-
-					<!-- end row -->
-
-				</section>
-				<!-- end widget grid -->
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
-		<!-- /.modal 弹出框 END -->
-
-		<!-- 修改信息 Modal 弹出框 begin-->
-		<div class="modal fade" id="editProj" tabindex="-1" role="dialog">
-			<div class="modal-dialog">
-				<!-- widget grid -->
-				<section id="widget-grid" class="modal-content">
-					<!-- row -->
-					<div class="row">
-						<!-- NEW WIDGET START -->
-						<article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
-							<!-- Widget ID (each widget will need unique ID)-->
-							<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
-							     data-widget-editbutton="false" data-widget-deletebutton="false" style="
+                <!-- widget options:
+                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                data-widget-colorbutton="false"
+                data-widget-editbutton="false"
+                data-widget-togglebutton="false"
+                data-widget-deletebutton="false"
+                data-widget-fullscreenbutton="false"
+                data-widget-custombutton="false"
+                data-widget-collapsed="true"
+                data-widget-sortable="false"
+
+                -->
+                <header>
+                  <div class="jarviswidget-ctrls" role="menu">
+                    <a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn closeBtn" rel="tooltip"
+                       title="" data-placement="bottom" data-original-title="close" data-dismiss="modal"><i
+                        class="fa fa-times"></i></a>
+                  </div>
+                  <h2>新增网络部项目 </h2>
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                  <!-- widget edit box -->
+                  <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+
+                  </div>
+                  <!-- end widget edit box -->
+
+                  <!-- widget content -->
+                  <div class="widget-body">
+
+                    <div class="row">
+                      <form id="wizard-1" novalidate="novalidate" class="smart-form">
+                        <div id="bootstrap-wizard-1" class="col-sm-12">
+                          <div class="form-bootstrapWizard">
+
+                            <ul class="bootstrapWizard form-wizard">
+                              <% if(user.authority.netprojControl.basicInfo === true){ %>
+                              <li class="active" data-target="#step1"
+                                  style="padding-right: 0;padding-left: 0;width: 50%">
+                                <a href="#tab1" data-toggle="tab"> <span
+                                    class="step">1</span> <span class="title">基本信息</span>
+                                </a>
+                              </li>
+                              <% } %>
+
+                              <% if(user.authority.netprojControl.incomeInfo === true){ %>
+                              <li data-target="#step2"
+                                <% if(user.authority.netprojControl.basicInfo === false){ %>
+                                  class="active"
+                                <% } %>
+                                  style="padding-right: 0;padding-left: 0;width: 50%">
+                                <a href="#tab2" data-toggle="tab"> <span
+                                    class="step">2</span> <span class="title">收入信息</span>
+                                </a>
+                              </li>
+                              <% } %>
+
+                            </ul>
+
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="tab-content">
+                            <% if(user.authority.netprojControl.basicInfo === true){ %>
+                            <div class="tab-pane active" id="tab1">
+                              <br>
+
+                              <!-- <h3><strong> 1 </strong> - 基本信息</h3> -->
+
+                              <fieldset>
+
+                                <section>
+                                  <div class="input-group hidden">
+
+                                    <input class="form-control" placeholder="序号" type="text" name="serialno">
+                                    <span class="input-group-addon">序号</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="工单号" type="text" name="billno">
+                                    <span class="input-group-addon">工单号</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="甲方项目负责人" type="text"
+                                           name="firstpartyofficer">
+                                    <span class="input-group-addon">甲方项目负责人</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="乙方项目负责人" type="text"
+                                           name="secondpartyofficer">
+                                    <span class="input-group-addon">乙方项目负责人</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <label class="select">
+                                      <select class="input-sm" name="properties">
+                                        <% selectOptions.propertiesList.forEach(function (option) { %>
+                                        <option value="<%= option %>"><%= option %></option>
+                                        <% }) %>
+                                      </select> <i></i>
+                                    </label>
+                                    <span class="input-group-addon">项目属性</span>
+                                  </div>
+                                </section>
+
+
+                                <section>
+                                  <div class="input-group">
+                                    <label class="select">
+                                      <select class="input-sm" name="projtype">
+                                        <option value="抢修">抢修</option>
+                                        <option value="大修">大修</option>
+                                        <option value="小修">小修</option>
+                                      </select> <i></i>
+                                    </label>
+                                    <span class="input-group-addon">项目类别</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="实施原因" type="text" name="reason">
+                                    <span class="input-group-addon">实施原因</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="项目名称" type="text" name="name">
+                                    <span class="input-group-addon">项目名称</span>
+                                  </div>
+                                </section>
+
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="工程地址" type="text" name="address">
+                                    <span class="input-group-addon">工程地址</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <label class="select">
+                                      <select class="input-sm" name="area">
+                                        <% selectOptions.areaList.forEach(function (option) { %>
+                                        <option value="<%= option %>"><%= option %></option>
+                                        <% }) %>
+                                      </select> <i></i>
+                                    </label>
+                                    <span class="input-group-addon">所属区域</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <label class="select">
+                                      <select class="input-sm" name="constrctteam">
+                                        <% selectOptions.constrctteamList.forEach(function (option) { %>
+                                        <option value="<%= option %>"><%= option %></option>
+                                        <% }) %>
+                                      </select> <i></i>
+                                    </label>
+                                    <span class="input-group-addon">施工队</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="施工队负责人" type="text" name="constrctofficer">
+                                    <span class="input-group-addon">施工队负责人</span>
+                                  </div>
+                                </section>
+
+
+                                <section>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99"
+                                           data-mask-placeholder="-" name="consigntime">
+                                                                            <span class="input-group-addon"> <i
+                                                                                class="fa fa-calendar"></i>
+                                                                            </span>
+                                    <span class="input-group-addon">委托时间</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <label class="select">
+                                      <select class="input-sm" name="situation">
+                                        <% selectOptions.situationList.forEach(function (option) { %>
+                                        <option value="<%= option %>"><%= option %></option>
+                                        <% }) %>
+                                      </select> <i></i>
+                                    </label>
+                                    <span class="input-group-addon">立项情况</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99"
+                                           data-mask-placeholder="-" name="constructbegintime">
+                                                                           <span class="input-group-addon"> <i
+                                                                               class="fa fa-calendar"></i>
+                                                                           </span>
+                                    <span class="input-group-addon">开工时间</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99"
+                                           data-mask-placeholder="-" name="finishtime">
+                                                                              <span class="input-group-addon"> <i
+                                                                                  class="fa fa-calendar"></i>
+                                                                              </span>
+                                    <span class="input-group-addon">完工时间</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99"
+                                           data-mask-placeholder="-" name="textreceivetime">
+                                                                            <span class="input-group-addon"> <i
+                                                                                class="fa fa-calendar"></i>
+                                                                            </span>
+                                    <span class="input-group-addon">竣工图纸收到日期（附件）</span>
+                                  </div>
+                                  <span class="text-muted">附件，请在新增后上传</span>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="甲方验收情况" type="text"
+                                           name="firstpartyacptstatus">
+                                    <span class="input-group-addon">甲方验收情况</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99"
+                                           data-mask-placeholder="-" name="inspecttime">
+                                                                           <span class="input-group-addon"> <i
+                                                                               class="fa fa-calendar"></i>
+                                                                           </span>
+                                    <span class="input-group-addon">送审日期（附件）</span>
+                                  </div>
+                                  <span class="text-muted">附件，请在新增后上传</span>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <textarea rows="5" name="basiccomments" placeholder="备注" class="form-control"
+                                              class="custom-scroll " style="resize: none;"></textarea>
+                                    <span class="input-group-addon">备注</span>
+                                  </div>
+                                </section>
+
+                              </fieldset>
+
+                            </div>
+                            <% } %>
+
+                            <% if(user.authority.netprojControl.incomeInfo === true){ %>
+                            <div
+                              class="tab-pane <% if(user.authority.netprojControl.basicInfo === false){ %> active <% } %>"
+                              id="tab2">
+                              <br>
+
+                              <!-- <h3><strong> 2</strong> - 收入信息</h3> -->
+
+
+                              <section>
+                                <div class="input-group">
+                                  <input class="form-control digit" placeholder="预算" type="text" name="budget">
+                                  <span class="input-group-addon">预算</span>
+                                </div>
+                              </section>
+
+                              <section>
+                                <div class="input-group">
+                                  <input class="form-control digit" placeholder="结算" type="text" name="clearing">
+                                  <span class="input-group-addon">结算</span>
+                                </div>
+                              </section>
+
+                              <section>
+                                <div class="input-group">
+                                  <input class="form-control digit" placeholder="开票金额（附件）" type="text"
+                                         name="voiceamount">
+                                  <span class="input-group-addon">开票金额（附件）</span>
+                                </div>
+                                <span class="text-muted">附件，请在新增后上传</span>
+                              </section>
+
+                              <section>
+                                <div class="input-group">
+                                  <input class="form-control digit income" placeholder="实际收款" type="text" name="income">
+                                  <span class="input-group-addon">实际收款</span>
+                                </div>
+                              </section>
+
+                              <section>
+                                <div class="input-group">
+                                  <input class="form-control digit outcome" placeholder="施工队结款" type="text"
+                                         name="outcome">
+                                  <span class="input-group-addon">施工队结款</span>
+                                </div>
+                              </section>
+
+                              <section>
+                                <div class="input-group">
+                                  <input class="form-control" placeholder="施工队工作量表格" type="text" name="worktable">
+                                  <span class="input-group-addon">施工队工作量表格</span>
+                                </div>
+                              </section>
+
+                              <section>
+                                <div class="input-group">
+                                  <input class="form-control digit otherfee" placeholder="其他费用" type="text"
+                                         name="otherfee">
+                                  <span class="input-group-addon">其他费用</span>
+                                </div>
+                              </section>
+
+                              <section>
+                                <div class="input-group">
+                                  <input class="form-control digit profit" placeholder="利润" type="text" name="profit">
+                                  <span class="input-group-addon">利润</span>
+                                </div>
+                              </section>
+
+                              <section>
+                                <div class="input-group">
+                                  <textarea rows="5" name="incomecomments" placeholder="备注" class="form-control"
+                                            class="custom-scroll " style="resize: none;"></textarea>
+                                  <span class="input-group-addon">备注</span>
+                                </div>
+                              </section>
+
+                            </div>
+                            <% } %>
+
+                            <footer>
+                              <button type="submit" class="btn btn-primary" id="saveProj">
+                                提交
+                              </button>
+                              <button type="button" class="btn btn-default closeBtn" data-dismiss="modal">
+                                取消
+                              </button>
+                            </footer>
+
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                  <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+              </div>
+              <!-- end widget -->
+
+            </article>
+            <!-- WIDGET END -->
+
+          </div>
+
+          <!-- end row -->
+
+        </section>
+        <!-- end widget grid -->
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal 弹出框 END -->
+
+    <!-- 修改信息 Modal 弹出框 begin-->
+    <div class="modal fade" id="editProj" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <!-- widget grid -->
+        <section id="widget-grid" class="modal-content">
+          <!-- row -->
+          <div class="row">
+            <!-- NEW WIDGET START -->
+            <article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+              <!-- Widget ID (each widget will need unique ID)-->
+              <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false"
+                   data-widget-deletebutton="false" style="
     margin-bottom: 0px;">
-								<!-- widget options:
-								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-								data-widget-colorbutton="false"
-								data-widget-editbutton="false"
-								data-widget-togglebutton="false"
-								data-widget-deletebutton="false"
-								data-widget-fullscreenbutton="false"
-								data-widget-custombutton="false"
-								data-widget-collapsed="true"
-								data-widget-sortable="false"
-
-								-->
-								<header>
-									<div class="jarviswidget-ctrls" role="menu">
-										<a href="javascript:void(0);"
-										   class="button-icon jarviswidget-delete-btn closeBtn" data-dismiss="modal"
-										   rel="tooltip" title="" data-placement="bottom" data-original-title="close"><i
-													class="fa fa-times"></i></a></div>
-									<h2>网络部项目详情 </h2>
-								</header>
-
-								<!-- widget div-->
-								<div>
-
-									<!-- widget edit box -->
-									<div class="jarviswidget-editbox">
-										<!-- This area used as dropdown edit box -->
-
-									</div>
-									<!-- end widget edit box -->
-
-									<!-- widget content -->
-									<div class="widget-body">
-
-										<div class="row">
-											<form id="wizard-1-edit" novalidate="novalidate">
-												<div id="bootstrap-wizard-1-edit" class="col-sm-12">
-													<div class="form-bootstrapWizard">
-
-														<ul class="bootstrapWizard form-wizard">
-															<li class="active" data-target="#step1"
-															    style="padding-right: 0;padding-left: 0;width: 50%">
-																<a href="#tab1-edit" data-toggle="tab"> <span
-																			class="step">1</span> <span class="title">基本信息</span>
-																</a>
-															</li>
-															<li data-target="#step2"
-															    style="padding-right: 0;padding-left: 0;width: 50%">
-																<a href="#tab2-edit" data-toggle="tab"> <span
-																			class="step">2</span> <span class="title">收入信息</span>
-																</a>
-															</li>
-														</ul>
-
-														<div class="clearfix"></div>
-													</div>
-													<div class="tab-content">
-														<div class="tab-pane active" id="tab1-edit">
-															<br>
-
-															<h3><strong> 1 </strong> - 基本信息</h3>
-
-															<fieldset>
-
-																<div class="form-group hidden">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">序号：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-
-																				<div>
-																					<input type="text" name="_id"
-																					       class="hidden" data-id="">
-																					<input class="form-control"
-																					       placeholder="序号" type="text"
-																					       name="serialno">
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">工单号：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-
-																				<div>
-																					<input class="form-control"
-																					       placeholder="工单号" type="text"
-																					       name="billno">
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2">甲方项目负责人：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-
-																				<div>
-																					<input class="form-control"
-																					       placeholder="甲方项目负责人"
-																					       type="text"
-																					       name="firstpartyofficer">
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2">乙方项目负责人：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-
-																				<div>
-																					<input class="form-control"
-																					       placeholder="乙方项目负责人"
-																					       type="text"
-																					       name="secondpartyofficer">
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">项目属性：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<label class="select">
-																						<select class="input-sm"
-																						        name="properties">
-																							<option value="管道">管道
-																							</option>
-																							<option value="光缆">光缆
-																							</option>
-																							<option value="设备">设备
-																							</option>
-																							<option value="客户端">客户端
-																							</option>
-																						</select> <i></i> </label>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">项目类别：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<label class="select">
-																						<select class="input-sm"
-																						        name="projtype">
-																							<option value="抢修">抢修
-																							</option>
-																							<option value="大修">大修
-																							</option>
-																							<option value="小修">小修
-																							</option>
-																						</select> <i></i> </label>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">实施原因：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<input class="form-control"
-																					       placeholder="实施原因"
-																					       type="text" name="reason">
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">项目名称：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<input class="form-control"
-																					       placeholder="项目名称"
-																					       type="text" name="name">
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">工程地址：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<input class="form-control"
-																					       placeholder="工程地址"
-																					       type="text" name="address">
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">所属区域：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<label class="select">
-																						<select class="input-sm"
-																						        name="area">
-																							<option value="黄浦">黄浦
-																							</option>
-																							<option value="卢湾">卢湾
-																							</option>
-																							<option value="徐汇">徐汇
-																							</option>
-																							<option value="长宁">长宁
-																							</option>
-																							<option value="静安">静安
-																							</option>
-																							<option value="普陀">普陀
-																							</option>
-																							<option value="闸北">闸北
-																							</option>
-																							<option value="虹口">虹口
-																							</option>
-																							<option value="杨浦">杨浦
-																							</option>
-																							<option value="宝山">宝山
-																							</option>
-																							<option value="嘉定">嘉定
-																							</option>
-																							<option value="浦东新区">浦东新区
-																							</option>
-																							<option value="松江">松江
-																							</option>
-																							<option value="金山">金山
-																							</option>
-																							<option value="青浦">青浦
-																							</option>
-																							<option value="南汇">南汇
-																							</option>
-																							<option value="奉贤">奉贤
-																							</option>
-																							<option value="崇明">崇明
-																							</option>
-																						</select> <i></i> </label>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">施工队：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<label class="select">
-																						<select class="input-sm"
-																						        name="constrctteam">
-																							<option value="中邮通">中邮通
-																							</option>
-																							<option value="中移">中移
-																							</option>
-																							<option value="邮电">邮电
-																							</option>
-																							<option value="广越">广越
-																							</option>
-																							<option value="东冠">东冠
-																							</option>
-																							<option value="和勤">和勤
-																							</option>
-																							<option value="电信">电信
-																							</option>
-																							<option value="久豪">久豪
-																							</option>
-																							<option value="贝电">贝电
-																							</option>
-																							<option value="海润">海润
-																							</option>
-																							<option value="中通二局">中通二局
-																							</option>
-																							<option value="翔发">翔发
-																							</option>
-																							<option value="辉程">辉程
-																							</option>
-																							<option value="龙盛">龙盛
-																							</option>
-																							<option value="明嬴">明嬴
-																							</option>
-																							<option value="盛脉">盛脉
-																							</option>
-																							<option value="通福">通福
-																							</option>
-																							<option value="万程">万程
-																							</option>
-																							<option value="信辰">信辰
-																							</option>
-																							<option value="远鹰">远鹰
-																							</option>
-																							<option value="阅龙">阅龙
-																							</option>
-																							<option value="置诚">置诚
-																							</option>
-																							<option value="兆康">兆康
-																							</option>
-																							<option value="兴霸">兴霸
-																							</option>
-																							<option value="和联">和联
-																							</option>
-																							<option value="鸿维">鸿维
-																							</option>
-																							<option value="嘉正">嘉正
-																							</option>
-																							<option value="炜晟">炜晟
-																							</option>
-																							<option value="新周">新周
-																							</option>
-																							<option value="信潮">信潮
-																							</option>
-																							<option value="众托">众托
-																							</option>
-																							<option value="共联">共联
-																							</option>
-																							<option value="中福">中福
-																							</option>
-																							<option value="长安">长安
-																							</option>
-																							<option value="都顺">都顺
-																							</option>
-																							<option value="联音">联音
-																							</option>
-																							<option value="商美">商美
-																							</option>
-																							<option value="英得">英得
-																							</option>
-																							<option value="亚通">亚通
-																							</option>
-																							<option value="邮顺">邮顺
-																							</option>
-																							<option value="渝华">渝华
-																							</option>
-																							<option value="忠吕">忠吕
-																							</option>
-																							<option value="中铁">中铁
-																							</option>
-																							<option value="天达">天达
-																							</option>
-																							<option value="虹鹰">虹鹰
-																							</option>
-																							<option value="兴和">兴和
-																							</option>
-																							<option value="云沪">云沪
-																							</option>
-																							<option value="雨花">雨花
-																							</option>
-																							<option value="晟平">晟平
-																							</option>
-																							<option value="秦禧">秦禧
-																							</option>
-																							<option value="立天">立天
-																							</option>
-																							<option value="中通一局">中通一局
-																							</option>
-																							<option value="博索">博索
-																							</option>
-																							<option value="富悦">富悦
-																							</option>
-																							<option value="廉创">廉创
-																							</option>
-																							<option value="润风">润风
-																							</option>
-																							<option value="海剑">海剑
-																							</option>
-																							<option value="宏晋">宏晋
-																							</option>
-																							<option value="米赛">米赛
-																							</option>
-																							<option value="伟琳">伟琳
-																							</option>
-																							<option value="骥通">骥通
-																							</option>
-																							<option value="北京工程局">
-																								北京工程局
-																							</option>
-																							<option value="景合">景合
-																							</option>
-																							<option value="海缆">海缆
-																							</option>
-																							<option value="煜菱">煜菱
-																							</option>
-																							<option value="鸿达">鸿达
-																							</option>
-																						</select> <i></i> </label>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2">施工队负责人：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<input class="form-control"
-																					       placeholder="施工队负责人"
-																					       type="text"
-																					       name="constrctofficer">
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">委托时间：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div class="input-group">
-																					<input type="text"
-																					       class="form-control"
-																					       placeholder="年/月/日"
-																					       data-mask="9999/99/99"
-																					       data-mask-placeholder="-"
-																					       name="consigntime">
-																					<span class="input-group-addon"><i
-																								class="fa fa-calendar"></i></span>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">立项情况：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<label class="select">
-																						<select class="input-sm"
-																						        name="situation">
-																							<option value="未开工">未开工
-																							</option>
-																							<option value="在建">在建
-																							</option>
-																							<option value="完工">完工
-																							</option>
-																							<option value="受阻">受阻
-																							</option>
-																							<option value="无法实施">无法实施
-																							</option>
-																							<option value="传输已达">传输已达
-																							</option>
-																							<option value="地址错误">地址错误
-																							</option>
-																						</select> <i></i> </label>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">开工时间：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div class="input-group">
-																					<input type="text"
-																					       class="form-control"
-																					       placeholder="年/月/日"
-																					       data-mask="9999/99/99"
-																					       data-mask-placeholder="-"
-																					       name="constructbegintime">
-																					<span class="input-group-addon"><i
-																								class="fa fa-calendar"></i></span>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">完工时间：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div class="input-group">
-																					<input type="text"
-																					       class="form-control"
-																					       placeholder="年/月/日"
-																					       data-mask="9999/99/99"
-																					       data-mask-placeholder="-"
-																					       name="finishtime">
-																					<span class="input-group-addon"><i
-																								class="fa fa-calendar"></i></span>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2">竣工图纸收到日期（附件）：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div class="input-group">
-																					<input type="text"
-																					       class="form-control"
-																					       placeholder="年/月/日"
-																					       data-mask="9999/99/99"
-																					       data-mask-placeholder="-"
-																					       name="textreceivetime">
-																					<span class="input-group-addon"><i
-																								class="fa fa-calendar"></i></span>
-																				</div>
-																				<br/>
-
-																				<div class="fileDiv">
-																					<input class="form-control"
-																					       type="file"
-																					       name="textreceivetimeFile"
-																					       id="textreceivetimeFile">
-																					<span style="padding-top: 3px">当前文件： <span
-																								name="textreceivetimeFileName"
-																								class="fileName"></span></span>
-																					<a class="btn btn-link upload">上传</a>
-																					<a class="btn btn-link download">下载</a>
-																					<span class="uploadInfo"></span>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2">甲方验收情况：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div>
-																					<input class="form-control"
-																					       placeholder="甲方验收情况"
-																					       type="text"
-																					       name="firstpartyacptstatus">
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2">送审日期（附件）：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<div class="input-group">
-																					<input type="text"
-																					       class="form-control"
-																					       placeholder="年/月/日"
-																					       data-mask="9999/99/99"
-																					       data-mask-placeholder="-"
-																					       name="inspecttime">
-																					<span class="input-group-addon"><i
-																								class="fa fa-calendar"></i></span>
-																				</div>
-																				<br/>
-
-																				<div class="fileDiv">
-																					<input class="form-control"
-																					       type="file"
-																					       name="inspecttimeFile"
-																					       id="inspecttimeFile">
-																					<span style="padding-top: 3px">当前文件： <span
-																								name="inspecttimeFileName"
-																								class="fileName"></span></span>
-																					<a class="btn btn-link upload">上传</a>
-																					<a class="btn btn-link download">下载</a>
-																					<span class="uploadInfo"></span>
-																				</div>
-
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-md-2"
-																	       style="padding-top: 7px;">备注：</label>
-
-																	<div class="col-md-10">
-																		<div class="row">
-																			<div class="col-sm-12">
-																				<textarea rows="5" name="basiccomments"
-																				          placeholder="备注"
-																				          class="form-control"
-																				          class="custom-scroll "
-																				          style="resize: none;"></textarea>
-																			</div>
-																		</div>
-																	</div>
-																	<p>&nbsp;</p>
-																</div>
-
-															</fieldset>
-
-														</div>
-														<div class="tab-pane" id="tab2-edit">
-															<br>
-
-															<h3><strong> 2</strong> - 收入信息</h3>
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">预算：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit"
-																				       placeholder="预算" type="text"
-																				       name="budget">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">结算：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit"
-																				       placeholder="结算" type="text"
-																				       name="clearing">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2">开票金额（附件）：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit"
-																				       placeholder="开票金额（附件）"
-																				       type="text" name="voiceamount">
-																				<br/>
-
-																				<div class="fileDiv">
-																					<input class="form-control"
-																					       type="file"
-																					       name="voiceamountFile"
-																					       id="voiceamountFile">
-																					<span style="padding-top: 3px">当前文件： <span
-																								name="voiceamountFileName"
-																								class="fileName"></span></span>
-																					<a class="btn btn-link upload">上传</a>
-																					<a class="btn btn-link download">下载</a>
-																					<span class="uploadInfo"></span>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">实际收款：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit income"
-																				       placeholder="实际收款" type="text"
-																				       name="income">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">施工队结款：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit outcome"
-																				       placeholder="施工队结款" type="text"
-																				       name="outcome">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2">施工队工作量表格：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control"
-																				       placeholder="施工队工作量表格"
-																				       type="text" name="worktable">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">其他费用：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit otherfee"
-																				       placeholder="其他费用" type="text"
-																				       name="otherfee">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">利润：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<div>
-																				<input class="form-control digit profit"
-																				       placeholder="自动计算" type="text"
-																				       name="profit">
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-
-															<div class="form-group">
-																<label class="control-label col-md-2"
-																       style="padding-top: 7px;">备注：</label>
-
-																<div class="col-md-10">
-																	<div class="row">
-																		<div class="col-sm-12">
-																			<textarea rows="5" name="incomecomments"
-																			          placeholder="备注"
-																			          class="form-control"
-																			          class="custom-scroll "
-																			          style="resize: none;"></textarea>
-																		</div>
-																	</div>
-																</div>
-																<p>&nbsp;</p>
-															</div>
-
-
-														</div>
-
-														<div class="form-actions">
-															<div class="row">
-																<footer>
-																	<button type="submit" id="saveProjEdited"
-																	        class="btn btn-primary">
-																		提交
-																	</button>
-																	<button type="button"
-																	        class="btn btn-default closeBtn"
-																	        data-dismiss="modal">
-																		取消
-																	</button>
-																</footer>
-															</div>
-														</div>
-
-													</div>
-												</div>
-											</form>
-										</div>
-
-									</div>
-									<!-- end widget content -->
-
-								</div>
-								<!-- end widget div -->
-
-							</div>
-							<!-- end widget -->
-
-						</article>
-						<!-- WIDGET END -->
-
-					</div>
-
-					<!-- end row -->
-
-				</section>
-				<!-- end widget grid -->
-				<!-- /.modal-content -->
-			</div>
-		</div>
-		<!-- 修改用户信息/.modal 弹出框 END -->
-
-	</div>
-	<!-- END MAIN CONTENT -->
+                <!-- widget options:
+                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                data-widget-colorbutton="false"
+                data-widget-editbutton="false"
+                data-widget-togglebutton="false"
+                data-widget-deletebutton="false"
+                data-widget-fullscreenbutton="false"
+                data-widget-custombutton="false"
+                data-widget-collapsed="true"
+                data-widget-sortable="false"
+
+                -->
+                <header>
+                  <div class="jarviswidget-ctrls" role="menu">
+                    <a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn closeBtn"
+                       data-dismiss="modal" rel="tooltip" title="" data-placement="bottom"
+                       data-original-title="close"><i class="fa fa-times"></i></a></div>
+                  <h2>网络部项目详情 </h2>
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                  <!-- widget edit box -->
+                  <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+
+                  </div>
+                  <!-- end widget edit box -->
+
+                  <!-- widget content -->
+                  <div class="widget-body">
+
+                    <div class="row">
+                      <form id="wizard-1-edit" novalidate="novalidate" class="smart-form">
+                        <div id="bootstrap-wizard-1-edit" class="col-sm-12">
+                          <div class="form-bootstrapWizard">
+
+                            <ul class="bootstrapWizard form-wizard">
+                              <% if(user.authority.netprojControl.basicInfo === true){ %>
+                              <li class="active" data-target="#step1"
+                                  style="padding-right: 0;padding-left: 0;width: 50%">
+                                <a href="#tab1-edit" data-toggle="tab"> <span
+                                    class="step">1</span> <span class="title">基本信息</span>
+                                </a>
+                              </li>
+                              <% } %>
+
+                              <% if(user.authority.netprojControl.incomeInfo === true){ %>
+                              <li data-target="#step2"
+                                <% if(user.authority.netprojControl.basicInfo === false){ %>
+                                  class="active"
+                                <% } %>
+                                  style="padding-right: 0;padding-left: 0;width: 50%">
+                                <a href="#tab2-edit" data-toggle="tab"> <span
+                                    class="step">2</span> <span class="title">收入信息</span>
+                                </a>
+                              </li>
+                              <% } %>
+
+                            </ul>
+
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="tab-content">
+                            <% if(user.authority.netprojControl.basicInfo === true){ %>
+                            <div class="tab-pane active" id="tab1-edit">
+                              <br>
+
+                              <!-- <h3><strong> 1 </strong> - 基本信息</h3> -->
+
+                              <fieldset>
+
+                                <section>
+                                  <div class="input-group hidden">
+                                    <input type="text" name="_id" class="hidden" data-id="">
+                                    <input class="form-control" placeholder="序号" type="text" name="serialno">
+                                    <span class="input-group-addon">序号</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="工单号" type="text" name="billno">
+                                    <span class="input-group-addon">工单号</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="甲方项目负责人" type="text"
+                                           name="firstpartyofficer">
+                                    <span class="input-group-addon">甲方项目负责人</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="乙方项目负责人" type="text"
+                                           name="secondpartyofficer">
+                                    <span class="input-group-addon">乙方项目负责人</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <label class="select">
+                                      <select class="input-sm" name="properties">
+                                        <% selectOptions.propertiesList.forEach(function (option) { %>
+                                        <option value="<%= option %>"><%= option %></option>
+                                        <% }) %>
+                                      </select> <i></i>
+                                    </label>
+                                    <span class="input-group-addon">项目属性</span>
+                                  </div>
+                                </section>
+
+
+                                <section>
+                                  <div class="input-group">
+                                    <label class="select">
+                                      <select class="input-sm" name="projtype">
+                                        <option value="抢修">抢修</option>
+                                        <option value="大修">大修</option>
+                                        <option value="小修">小修</option>
+                                      </select> <i></i>
+                                    </label>
+                                    <span class="input-group-addon">项目类别</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="实施原因" type="text" name="reason">
+                                    <span class="input-group-addon">实施原因</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="项目名称" type="text" name="name">
+                                    <span class="input-group-addon">项目名称</span>
+                                  </div>
+                                </section>
+
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="工程地址" type="text" name="address">
+                                    <span class="input-group-addon">工程地址</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <label class="select">
+                                      <select class="input-sm" name="area">
+                                        <% selectOptions.areaList.forEach(function (option) { %>
+                                        <option value="<%= option %>"><%= option %></option>
+                                        <% }) %>
+                                      </select> <i></i>
+                                    </label>
+                                    <span class="input-group-addon">所属区域</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <label class="select">
+                                      <select class="input-sm" name="constrctteam">
+                                        <% selectOptions.constrctteamList.forEach(function (option) { %>
+                                        <option value="<%= option %>"><%= option %></option>
+                                        <% }) %>
+                                      </select> <i></i>
+                                    </label>
+                                    <span class="input-group-addon">施工队</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="施工队负责人" type="text" name="constrctofficer">
+                                    <span class="input-group-addon">施工队负责人</span>
+                                  </div>
+                                </section>
+
+
+                                <section>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99"
+                                           data-mask-placeholder="-" name="consigntime">
+                                                                            <span class="input-group-addon"> <i
+                                                                                class="fa fa-calendar"></i>
+                                                                            </span>
+                                    <span class="input-group-addon">委托时间</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <label class="select">
+                                      <select class="input-sm" name="situation">
+                                        <% selectOptions.situationList.forEach(function (option) { %>
+                                        <option value="<%= option %>"><%= option %></option>
+                                        <% }) %>
+                                      </select> <i></i>
+                                    </label>
+                                    <span class="input-group-addon">立项情况</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99"
+                                           data-mask-placeholder="-" name="constructbegintime">
+                                                                           <span class="input-group-addon"> <i
+                                                                               class="fa fa-calendar"></i>
+                                                                           </span>
+                                    <span class="input-group-addon">开工时间</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99"
+                                           data-mask-placeholder="-" name="finishtime">
+                                                                              <span class="input-group-addon"> <i
+                                                                                  class="fa fa-calendar"></i>
+                                                                              </span>
+                                    <span class="input-group-addon">完工时间</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99"
+                                           data-mask-placeholder="-" name="textreceivetime">
+                                                                       <span class="input-group-addon"> <i
+                                                                           class="fa fa-calendar"></i>
+                                                                       </span>
+                                    <span class="input-group-addon">竣工图纸收到日期（附件）</span>
+                                  </div>
+
+                                  <div class="fileDiv input input-file">
+                                                                       <span class="button">
+                                                                           <input type="file" id="textreceivetimeFile"
+                                                                                  name="textreceivetimeFile"
+                                                                                  onchange="">选择文件</span>
+                                                                       <span style="padding-top: 3px">
+                                                                           当前文件
+                                                                           <span name="textreceivetimeFileName"
+                                                                                 class="fileName"></span>
+                                                                       </span>
+                                    <a class="btn btn-link upload">上传</a>
+                                    <a class="btn btn-link download">下载</a>
+                                    <span class="uploadInfo"></span>
+                                  </div>
+
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="甲方验收情况" type="text"
+                                           name="firstpartyacptstatus">
+                                    <span class="input-group-addon">甲方验收情况</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="年/月/日" data-mask="9999/99/99"
+                                           data-mask-placeholder="-" name="inspecttime">
+                                                                       <span class="input-group-addon"> <i
+                                                                           class="fa fa-calendar"></i>
+                                                                       </span>
+                                    <span class="input-group-addon">送审日期（附件）</span>
+                                  </div>
+
+                                  <div class="fileDiv input input-file">
+                                                                       <span class="button">
+                                                                           <input type="file" id="inspecttimeFile"
+                                                                                  name="inspecttimeFile" onchange="">选择文件</span>
+                                                                       <span style="padding-top: 3px">
+                                                                           当前文件
+                                                                           <span name="inspecttimeFileName"
+                                                                                 class="fileName"></span>
+                                                                       </span>
+                                    <a class="btn btn-link upload">上传</a>
+                                    <a class="btn btn-link download">下载</a>
+                                    <span class="uploadInfo"></span>
+                                  </div>
+
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <textarea rows="5" name="basiccomments" placeholder="备注" class="form-control"
+                                              class="custom-scroll " style="resize: none;"></textarea>
+                                    <span class="input-group-addon">备注</span>
+                                  </div>
+                                </section>
+
+
+                              </fieldset>
+
+                            </div>
+                            <% } %>
+
+                            <% if(user.authority.netprojControl.incomeInfo === true){ %>
+                            <div
+                              class="tab-pane <% if(user.authority.netprojControl.basicInfo === false){ %> active <% } %>"
+                              id="tab2-edit">
+                              <br>
+                              <fieldset>
+                                <!--   <h3><strong> 2</strong> - 收入信息</h3> -->
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control digit" placeholder="预算" type="text" name="budget">
+                                    <span class="input-group-addon">预算</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control digit" placeholder="结算" type="text" name="clearing">
+                                    <span class="input-group-addon">结算</span>
+                                  </div>
+                                </section>
+
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control digit" placeholder="开票金额（附件）" type="text"
+                                           name="voiceamount">
+                                    <span class="input-group-addon">开票金额（附件）</span>
+                                  </div>
+
+                                  <div class="fileDiv input input-file">
+                                                                     <span class="button">
+                                                                         <input type="file" id="voiceamountFile"
+                                                                                name="voiceamountFile" onchange="">选择文件</span>
+                                                                     <span style="padding-top: 3px">
+                                                                         当前文件
+                                                                         <span name="voiceamountFileName"
+                                                                               class="fileName"></span>
+                                                                     </span>
+                                    <a class="btn btn-link upload">上传</a>
+                                    <a class="btn btn-link download">下载</a>
+                                    <span class="uploadInfo"></span>
+                                  </div>
+
+                                </section>
+
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control digit income" placeholder="实际收款" type="text"
+                                           name="income">
+                                    <span class="input-group-addon">实际收款</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control digit outcome" placeholder="施工队结款" type="text"
+                                           name="outcome">
+                                    <span class="input-group-addon">施工队结款</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control" placeholder="施工队工作量表格" type="text" name="worktable">
+                                    <span class="input-group-addon">施工队工作量表格</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control digit otherfee" placeholder="其他费用" type="text"
+                                           name="otherfee">
+                                    <span class="input-group-addon">其他费用</span>
+                                  </div>
+                                </section>
+
+                                <section>
+                                  <div class="input-group">
+                                    <input class="form-control digit profit" placeholder="自动计算" type="text"
+                                           name="profit">
+                                    <span class="input-group-addon">利润</span>
+                                  </div>
+                                </section>
+
+
+                                <section>
+                                  <div class="input-group">
+                                    <textarea rows="5" name="incomecomments" placeholder="备注" class="form-control"
+                                              class="custom-scroll " style="resize: none;"></textarea>
+                                    <span class="input-group-addon">备注</span>
+                                  </div>
+                                </section>
+
+                              </fieldset>
+                            </div>
+                            <% } %>
+
+                            <footer>
+                              <button type="submit" class="btn btn-primary" id="saveProjEdited">提交</button>
+                              <button type="button" class="btn btn-default closeBtn" data-dismiss="modal">取消</button>
+                            </footer>
+
+
+                          </div>
+                        </div>
+                        <input type="text" name="_id" class="hidden" data-id="">
+                      </form>
+                    </div>
+
+                  </div>
+                  <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+              </div>
+              <!-- end widget -->
+
+            </article>
+            <!-- WIDGET END -->
+
+          </div>
+
+          <!-- end row -->
+
+        </section>
+        <!-- end widget grid -->
+        <!-- /.modal-content -->
+      </div>
+    </div>
+    <!-- 修改用户信息/.modal 弹出框 END -->
+
+  </div>
+  <!-- END MAIN CONTENT -->
 
 </div>
 <!-- END MAIN PANEL -->
-<!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
-Note: These tiles are completely responsive,
-you can add as many as you like
--->
-<div id="shortcut">
-	<ul>
-		<li>
-			<a href="#inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i
-							class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span>
-			</a>
-		</li>
-		<li>
-			<a href="#calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i
-							class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
-		</li>
-		<li>
-			<a href="#gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i
-							class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>
-		</li>
-		<li>
-			<a href="#invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i
-							class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span>
-			</a>
-		</li>
-		<li>
-			<a href="#gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i
-							class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>
-		</li>
-		<li>
-			<a href="/profile" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span
-						class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
-		</li>
-	</ul>
-</div>
-<!-- END SHORTCUT AREA -->
+
 
 <!--================================================== -->
 
@@ -2095,16 +1088,16 @@ you can add as many as you like
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script> -->
 <script>
-	if (!window.jQuery) {
-		document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
-	}
+  if (!window.jQuery) {
+    document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
+  }
 </script>
 
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> -->
 <script>
-	if (!window.jQuery.ui) {
-		document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
-	}
+  if (!window.jQuery.ui) {
+    document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+  }
 </script>
 
 <!-- JS TOUCH : include this plugin for mobile drag / drop touch events
@@ -2168,548 +1161,614 @@ you can add as many as you like
 
 <script type="text/javascript">
 
-	// DO NOT REMOVE : GLOBAL FUNCTIONS!
+  // DO NOT REMOVE : GLOBAL FUNCTIONS!
 
-	$(document).ready(function () {
+  $(document).ready(function () {
 
-		pageSetUp();
+    pageSetUp();
 
-		/*
-		 * BASIC
-		 */
-		$('#dt_basic').dataTable({
-			"sPaginationType": "bootstrap_full"
-		});
+    /*
+     * BASIC
+     */
+    $('#dt_basic').dataTable({
+      "sPaginationType": "bootstrap_full"
+    });
 
-		/* END BASIC */
+    /* END BASIC */
 
-		/* Add the events etc before DataTables hides a column */
-		$("#datatable_fixed_column thead input").keyup(function () {
-			oTable.fnFilter(this.value, oTable.oApi._fnVisibleToColumnIndex(oTable.fnSettings(), $("thead input").index(this)));
-		});
+    /* Add the events etc before DataTables hides a column */
+    $("#datatable_fixed_column thead input").keyup(function () {
+      oTable.fnFilter(this.value, oTable.oApi._fnVisibleToColumnIndex(oTable.fnSettings(), $("thead input").index(this)));
+    });
 
-		$("#datatable_fixed_column thead input").each(function (i) {
-			this.initVal = this.value;
-		});
-		$("#datatable_fixed_column thead input").focus(function () {
-			if (this.className == "search_init") {
-				this.className = "";
-				this.value = "";
-			}
-		});
-		$("#datatable_fixed_column thead input").blur(function (i) {
-			if (this.value == "") {
-				this.className = "search_init";
-				this.value = this.initVal;
-			}
-		});
-
-
-		var oTable = $('#datatable_fixed_column').dataTable({
-			"sDom": "<'dt-top-row'><'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
-			//"sDom" : "t<'row dt-wrapper'<'col-sm-6'i><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'>>",
-			"oLanguage": {
-				"sSearch": "Search all columns:"
-			},
-			"bSortCellsTop": true
-		});
+    $("#datatable_fixed_column thead input").each(function (i) {
+      this.initVal = this.value;
+    });
+    $("#datatable_fixed_column thead input").focus(function () {
+      if (this.className == "search_init") {
+        this.className = "";
+        this.value = "";
+      }
+    });
+    $("#datatable_fixed_column thead input").blur(function (i) {
+      if (this.value == "") {
+        this.className = "search_init";
+        this.value = this.initVal;
+      }
+    });
 
 
-		/*
-		 * COL ORDER
-		 */
-		$('#datatable_col_reorder').dataTable({
-			"sPaginationType": "bootstrap",
-			"sDom": "R<'dt-top-row'Clf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
-			"fnInitComplete": function (oSettings, json) {
-				$('.ColVis_Button').addClass('btn btn-default btn-sm').html('显示列 <i class="icon-arrow-down"></i>');
-			}
-		});
+    var oTable = $('#datatable_fixed_column').dataTable({
+      "sDom": "<'dt-top-row'><'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+      //"sDom" : "t<'row dt-wrapper'<'col-sm-6'i><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'>>",
+      "oLanguage": {
+        "sSearch": "Search all columns:"
+      },
+      "bSortCellsTop": true
+    });
 
-		/* END COL ORDER */
 
-		/* TABLE TOOLS */
-		$('#datatable_tabletools').dataTable({
-			"sDom": "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
-			"oTableTools": {
-				"aButtons": ["copy", "print", {
-					"sExtends": "collection",
-					"sButtonText": 'Save <span class="caret" />',
-					"aButtons": ["csv", "xls", "pdf"]
-				}],
-				"sSwfPath": "js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf"
-			},
-			"fnInitComplete": function (oSettings, json) {
-				$(this).closest('#dt_table_tools_wrapper').find('.DTTT.btn-group').addClass('table_tools_group').children('a.btn').each(function () {
-					$(this).addClass('btn-sm btn-default');
-				});
-			}
-		});
+    /*
+     * COL ORDER
+     */
+    $('#datatable_col_reorder').dataTable({
+      "sPaginationType": "bootstrap",
+      "sDom": "R<'dt-top-row'Clf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+      "fnInitComplete": function (oSettings, json) {
+        $('.ColVis_Button').addClass('btn btn-default btn-sm').html('显示列 <i class="icon-arrow-down"></i>');
+      }
+    });
 
-		/* END TABLE TOOLS */
+    /* END COL ORDER */
 
-		//标题修正
-		$("#gridTitle").text("网络部项目管理");
+    /* TABLE TOOLS */
+    $('#datatable_tabletools').dataTable({
+      "sDom": "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+      "oTableTools": {
+        "aButtons": ["copy", "print", {
+          "sExtends": "collection",
+          "sButtonText": 'Save <span class="caret" />',
+          "aButtons": ["csv", "xls", "pdf"]
+        }],
+        "sSwfPath": "js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf"
+      },
+      "fnInitComplete": function (oSettings, json) {
+        $(this).closest('#dt_table_tools_wrapper').find('.DTTT.btn-group').addClass('table_tools_group').children('a.btn').each(function () {
+          $(this).addClass('btn-sm btn-default');
+        });
+      }
+    });
 
-		//在表格内添加管理按钮
-		$(".widget-body-toolbar").append($("#ControlButton").html());
-		$("#ControlButton").remove();
+    /* END TABLE TOOLS */
 
-		//全选(全不选)用户
-		$("input[name='selectAll']").change(function (e) {
-			if ($(this).prop("checked")) {
-				$("input[name='selectOne']").each(function () {
-					$(this).prop("checked", true);
-				});
-			} else {
-				$("input[name='selectOne']").each(function () {
-					$(this).prop("checked", false);
-				});
-			}
-		})
+    //标题修正
+    $("#gridTitle").text("网络部项目管理");
 
-		//删除用户功能
-		$("#delete-proj").click(function (e) {
-			//获取所有选中要删除用户id的数组
-			var idsToDelete = [];
-			$("input[name='selectOne']:checked").each(function () {
-				idsToDelete.push($(this).attr("id"));
-			});
-			$.ajax({
-				type: "DELETE",
-				url: "/netproj",
-				contentType: 'application/json',
-				data: JSON.stringify(idsToDelete),
-				dataType: "json",
-				success: function (result) {
-					if (result.success === true) {
-						location.reload();
-					} else {
-						alert("删除失败");
-					}
-				}
-			});
-		});
+    //在表格内添加管理按钮
+    $(".widget-body-toolbar").append($("#ControlButton").html());
+    $("#ControlButton").remove();
 
-		//向修改信息框中显示已有的信息
-		$(".edit").click(function () {
-			//获取项目id
-			var projToEdit = {};
-			projToEdit.id = $(this).attr("data-projId");
-			$.ajax({
-				type: "POST",
-				url: "/netproj/getById",
-				contentType: 'application/json',
-				data: JSON.stringify(projToEdit),
-				dataType: "json",
-				success: function (engproj) {
-					if (engproj !== null) {
-						//basicInfo
-						$("#tab1-edit  input").each(function () {
-							var inputName = $(this).attr("name");
-							if (inputName === "_id") {
-								$(this).val(engproj._id);
-							} else {
-								$(this).val(engproj.basicInfo[inputName]);
-							}
-						});
-						$("#tab1-edit  select").each(function () {
-							var selectName = $(this).attr("name");
-							$(this).val(engproj.basicInfo[selectName]);
-						});
-						$("#tab1-edit  textarea").each(function () {
-							var textareaName = $(this).attr("name");
-							$(this).val(engproj.basicInfo[textareaName]);
-						});
-						//materialInfo
-						$("#tab2-edit  input").each(function () {
-							var inputName = $(this).attr("name");
-							$(this).val(engproj.incomeInfo[inputName]);
-						});
-						$("#tab2-edit  select").each(function () {
-							var selectName = $(this).attr("name");
-							$(this).val(engproj.incomeInfo[selectName]);
-						});
-						$("#tab2-edit  textarea").each(function () {
-							var textareaName = $(this).attr("name");
-							$(this).val(engproj.incomeInfo[textareaName]);
-						});
-						//附件
-						$(".fileDiv .fileName").each(function () {
-							var filename = $(this).attr("name");
-							$(this).text(engproj.fileInfo[filename]);
-						});
-					} else {
-						alert("获取项目信息失败");
-					}
-				}
-			})
-		});
+    //全选(全不选)用户
+    $("input[name='selectAll']").change(function (e) {
+      if ($(this).prop("checked")) {
+        $("input[name='selectOne']").each(function () {
+          $(this).prop("checked", true);
+        });
+      } else {
+        $("input[name='selectOne']").each(function () {
+          $(this).prop("checked", false);
+        });
+      }
+    })
 
-		//退出修改框时清空内容,回到第一步
-		$("#editProj .closeBtn").click(function () {
-			$("#editProj input").each(function () {
-				$(this).val("");
-			});
-			$("#editProj .bootstrapWizard li").each(function () {
-				$(this).removeClass();
-			});
-			$("#editProj .bootstrapWizard li:first").addClass("active");
-			$("#editProj .tab-pane").each(function () {
-				$(this).removeClass("active");
-			});
-			$("#editProj .tab-pane:first").addClass("active");
+    //删除功能
+    $("#delete-proj").click(function (e) {
+      //确认信息框
+      var comfirm = confirm("确定要删除吗？");
+      if (comfirm === false) {
+        return;
+      }
+      //获取所有选中要删除用户id的数组
+      var idsToDelete = [];
+      $("input[name='selectOne']:checked").each(function () {
+        idsToDelete.push($(this).attr("id"));
+      });
+      $.ajax({
+        type: "DELETE",
+        url: "/netproj",
+        contentType: 'application/json',
+        data: JSON.stringify(idsToDelete),
+        dataType: "json",
+        success: function (result) {
+          if (result.success === true) {
+            location.reload();
+          } else {
+            alert("删除失败");
+          }
+        }
+      });
+    });
 
-			clearErrInfo("editProj");
-		});
+    //退出修改框时清空内容,回到第一步
+    $("#editProj .closeBtn").click(function () {
+      $("#editProj input").each(function () {
+        $(this).val("");
+      });
+      $("#editProj .bootstrapWizard li").each(function () {
+        $(this).removeClass();
+      });
+      $("#editProj .bootstrapWizard li:first").addClass("active");
+      $("#editProj .tab-pane").each(function () {
+        $(this).removeClass("active");
+      });
+      $("#editProj .tab-pane:first").addClass("active");
 
-		//退出新增框时清空内容，回到第一步
-		$("#addProj .closeBtn").click(function () {
-			$("#addProj input").each(function () {
-				$(this).val("");
-			});
-			$("#addProj .bootstrapWizard li").each(function () {
-				$(this).removeClass();
-			});
-			$("#addProj .bootstrapWizard li:first").addClass("active");
-			$("#addProj .tab-pane").each(function () {
-				$(this).removeClass("active");
-			});
-			$("#addProj .tab-pane:first").addClass("active");
+      clearErrInfo("editProj");
+    });
 
-			clearErrInfo("addProj");
-		});
+    //退出新增框时清空内容，回到第一步
+    $("#addProj .closeBtn").click(function () {
+      $("#addProj input").each(function () {
+        $(this).val("");
+      });
+      $("#addProj .bootstrapWizard li").each(function () {
+        $(this).removeClass();
+      });
+      $("#addProj .bootstrapWizard li:first").addClass("active");
+      $("#addProj .tab-pane").each(function () {
+        $(this).removeClass("active");
+      });
+      $("#addProj .tab-pane:first").addClass("active");
 
-		//新增用户框发送，验证
-		$("#saveProj").click(function (e) {
-			e.preventDefault();
-			//初始化proj对象
-			var formInfo = {};
-			formInfo.proj = {};
-			formInfo.proj.basicInfo = {};
-			formInfo.proj.incomeInfo = {};
-			//basicInfo
-			$("#tab1  input").each(function () {
-				var inputName = $(this).attr("name");
-				formInfo.proj.basicInfo[inputName] = $(this).val();
-			});
-			$("#tab1  select").each(function () {
-				var selectName = $(this).attr("name");
-				formInfo.proj.basicInfo[selectName] = $(this).val();
-			});
-			$("#tab1  textarea").each(function () {
-				var textareaName = $(this).attr("name");
-				formInfo.proj.basicInfo[textareaName] = $(this).val();
-			});
-			//incomeInfo
-			$("#tab2  input").each(function () {
-				var inputName = $(this).attr("name");
-				formInfo.proj.incomeInfo[inputName] = $(this).val();
-			});
-			$("#tab2  select").each(function () {
-				var selectName = $(this).attr("name");
-				formInfo.proj.incomeInfo[selectName] = $(this).val();
-			});
-			$("#tab2  textarea").each(function () {
-				var textareaName = $(this).attr("name");
-				formInfo.proj.incomeInfo[textareaName] = $(this).val();
-			});
-			$("#saveProj").addClass("disabled").text("保存中...");
-			$.ajax({
-				type: "POST",
-				url: "/netproj/save",
-				contentType: 'application/json',
-				data: JSON.stringify(formInfo),
-				dataType: "json",
-				success: function (result) {
-					if (result.success === true) {
-						location.reload();
-					} else {
-						alert("数据存储出错");
-						$("#saveProj").removeClass("disabled").text("提交 ");
-					}
-				}
-			});
-		});
+      clearErrInfo("addProj");
+    });
 
-		//修改信息框发送，验证
-		$("#saveProjEdited").click(function (e) {
-			e.preventDefault();
-			//初始化proj对象
-			var formInfo = {};
-			formInfo.proj = {};
-			formInfo.proj.basicInfo = {};
-			formInfo.proj.incomeInfo = {};
-			//basicInfo
-			$("#tab1-edit  input").each(function () {
-				var inputName = $(this).attr("name");
-				if (inputName === "_id") {
-					formInfo.proj._id = $(this).val();
-				} else {
-					formInfo.proj.basicInfo[inputName] = $(this).val();
-				}
-			});
-			$("#tab1-edit select").each(function () {
-				var selectName = $(this).attr("name");
-				formInfo.proj.basicInfo[selectName] = $(this).val();
-			});
-			$("#tab1-edit textarea").each(function () {
-				var textareaName = $(this).attr("name");
-				formInfo.proj.basicInfo[textareaName] = $(this).val();
-			});
-			//incomeInfo
-			$("#tab2-edit  input").each(function () {
-				var inputName = $(this).attr("name");
-				formInfo.proj.incomeInfo[inputName] = $(this).val();
-			});
-			$("#tab2-edit  select").each(function () {
-				var selectName = $(this).attr("name");
-				formInfo.proj.incomeInfo[selectName] = $(this).val();
-			});
-			$("#tab2-edit  textarea").each(function () {
-				var textareaName = $(this).attr("name");
-				formInfo.proj.incomeInfo[textareaName] = $(this).val();
-			});
-			$("#saveProjEdited").addClass("disabled").text("提交中...");
-			$.ajax({
-				type: "POST",
-				url: "/netproj/edit",
-				contentType: 'application/json',
-				data: JSON.stringify(formInfo),
-				dataType: "json",
-				success: function (result) {
-					if (result.success === true) {
-						location.reload();
-					} else {
-						alert("数据存储出错");
-						$("#saveProjEdited").removeClass("disabled").text("提交");
-					}
-				}
-			});
-		});
+    //新增用户框发送，验证
+    $("#saveProj").click(function (e) {
+      e.preventDefault();
+      //初始化proj对象
+      var formInfo = {};
+      formInfo.proj = {};
+      formInfo.proj.basicInfo = {};
+      formInfo.proj.incomeInfo = {};
+      //basicInfo
+      $("#tab1  input").each(function () {
+        var inputName = $(this).attr("name");
+        formInfo.proj.basicInfo[inputName] = $(this).val();
+      });
+      $("#tab1  select").each(function () {
+        var selectName = $(this).attr("name");
+        formInfo.proj.basicInfo[selectName] = $(this).val();
+      });
+      $("#tab1  textarea").each(function () {
+        var textareaName = $(this).attr("name");
+        formInfo.proj.basicInfo[textareaName] = $(this).val();
+      });
+      //incomeInfo
+      $("#tab2  input").each(function () {
+        var inputName = $(this).attr("name");
+        formInfo.proj.incomeInfo[inputName] = $(this).val();
+      });
+      $("#tab2  select").each(function () {
+        var selectName = $(this).attr("name");
+        formInfo.proj.incomeInfo[selectName] = $(this).val();
+      });
+      $("#tab2  textarea").each(function () {
+        var textareaName = $(this).attr("name");
+        formInfo.proj.incomeInfo[textareaName] = $(this).val();
+      });
+      $("#saveProj").addClass("disabled").text("保存中...");
+      $.ajax({
+        type: "POST",
+        url: "/netproj/save",
+        contentType: 'application/json',
+        data: JSON.stringify(formInfo),
+        dataType: "json",
+        success: function (result) {
+          if (result.success === true) {
+            location.reload();
+          } else {
+            alert("数据存储出错");
+            $("#saveProj").removeClass("disabled").text("提交 ");
+          }
+        }
+      });
+    });
 
-		//数字验证
-		$("#addProj .digit").each(function () {
-			var patten = new RegExp(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/);
+    //修改信息框发送，验证
+    $("#saveProjEdited").click(function (e) {
+      e.preventDefault();
+      //初始化proj对象
+      var formInfo = {};
+      formInfo.proj = {};
+      formInfo.proj.basicInfo = {};
+      formInfo.proj.incomeInfo = {};
+      formInfo.proj._id = $("#editProj input[name='_id']").val();
+      //basicInfo
+      $("#tab1-edit  input").each(function () {
+        var inputName = $(this).attr("name");
+        if (inputName === "_id") {
+          formInfo.proj._id = $(this).val();
+        } else {
+          formInfo.proj.basicInfo[inputName] = $(this).val();
+        }
+      });
+      $("#tab1-edit select").each(function () {
+        var selectName = $(this).attr("name");
+        formInfo.proj.basicInfo[selectName] = $(this).val();
+      });
+      $("#tab1-edit textarea").each(function () {
+        var textareaName = $(this).attr("name");
+        formInfo.proj.basicInfo[textareaName] = $(this).val();
+      });
+      //incomeInfo
+      $("#tab2-edit  input").each(function () {
+        var inputName = $(this).attr("name");
+        formInfo.proj.incomeInfo[inputName] = $(this).val();
+      });
+      $("#tab2-edit  select").each(function () {
+        var selectName = $(this).attr("name");
+        formInfo.proj.incomeInfo[selectName] = $(this).val();
+      });
+      $("#tab2-edit  textarea").each(function () {
+        var textareaName = $(this).attr("name");
+        formInfo.proj.incomeInfo[textareaName] = $(this).val();
+      });
+      $("#saveProjEdited").addClass("disabled").text("提交中...");
+      $.ajax({
+        type: "POST",
+        url: "/netproj/edit",
+        contentType: 'application/json',
+        data: JSON.stringify(formInfo),
+        dataType: "json",
+        success: function (result) {
+          if (result.success === true) {
+            location.reload();
+          } else {
+            alert("数据存储出错");
+            $("#saveProjEdited").removeClass("disabled").text("提交");
+          }
+        }
+      });
+    });
 
-			$(this).focus(function (e) {
-				clearErrInfoByInputName("addProj", $(this).attr("name"));
+    //数字验证
+    $("#addProj .digit").each(function () {
+      var patten = new RegExp(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/);
 
-				if ($("#saveProj").hasClass("disabled")) {
-					$(this).val("");
-					$("#saveProj").removeClass("disabled");
-				}
+      $(this).focus(function (e) {
+        clearErrInfoByInputName("addProj", $(this).attr("name"));
 
-			});
+        if ($("#saveProj").hasClass("disabled")) {
+          $(this).val("");
+          $("#saveProj").removeClass("disabled");
+        }
 
-			$(this).blur(function (e) {
-				var text = $(this).val();
-				if (patten.test(text) !== true) {
-					showErrInfo("addProj", $(this).attr("name"), "输入内容需要是数字！");
-					$("#saveProj").addClass("disabled");
-				}
-			});
-		});
-		$("#editProj .digit").each(function () {
-			var patten = new RegExp(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/);
+      });
 
-			$(this).focus(function (e) {
-				clearErrInfoByInputName("editProj", $(this).attr("name"));
+      $(this).blur(function (e) {
+        var text = $(this).val();
+        if (patten.test(text) !== true) {
+          showErrInfo("addProj", $(this).attr("name"), "输入内容需要是数字！");
+          $("#saveProj").addClass("disabled");
+        }
+      });
+    });
+    $("#editProj .digit").each(function () {
+      var patten = new RegExp(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/);
 
-				if ($("#saveProjEdited").hasClass("disabled")) {
-					$(this).val("");
-					$("#saveProjEdited").removeClass("disabled");
-				}
-			});
-			$(this).blur(function (e) {
-				var text = $(this).val();
-				if (patten.test(text) !== true) {
-					showErrInfo("editProj", $(this).attr("name"), "输入内容需要是数字！");
-					$("#saveProjEdited").addClass("disabled");
-				}
-			});
-		});
+      $(this).focus(function (e) {
+        clearErrInfoByInputName("editProj", $(this).attr("name"));
 
-		//清除输入框内表单的错误信息
-		function clearErrInfo(formId) {
-			$("#" + formId + " span[class*='err-info']").remove();
-			$("#" + formId + " input").each(function () {
-				$(this)
-						.parent()
-						.parent()
-						.removeClass("has-error");
-			});
-		}
+        if ($("#saveProjEdited").hasClass("disabled")) {
+          $(this).val("");
+          $("#saveProjEdited").removeClass("disabled");
+        }
+      });
+      $(this).blur(function (e) {
+        var text = $(this).val();
+        if (patten.test(text) !== true) {
+          showErrInfo("editProj", $(this).attr("name"), "输入内容需要是数字！");
+          $("#saveProjEdited").addClass("disabled");
+        }
+      });
+    });
 
-		function clearErrInfoByInputName(formId, inputName) {
-			$("#" + formId + " input[name='" + inputName + "']").each(function () {
-				$(this)
-						.parent()
-						.parent()
-						.removeClass("has-error")
-						.children(".err-info")
-						.remove();
-			});
-		}
+    //清除输入框内表单的错误信息
+    function clearErrInfo(formId) {
+      $("#" + formId + " span[class*='err-info']").remove();
+      $("#" + formId + " input").each(function () {
+        $(this)
+          .parent()
+          .parent()
+          .removeClass("has-error");
+      });
+    }
 
-		//展示输入框内表单的错误信息
-		function showErrInfo(formId, inputName, errInfo) {
-			$("#" + formId + " input[name='" + inputName + "']")
-					.parent()
-					.parent()
-					.addClass("has-error")
-					.append('<span class="help-block err-info"><i class="fa fa-warning"></i>' + errInfo + '</span>');
-		}
+    function clearErrInfoByInputName(formId, inputName) {
+      $("#" + formId + " input[name='" + inputName + "']").each(function () {
+        $(this)
+          .parent()
+          .parent()
+          .removeClass("has-error")
+          .children(".err-info")
+          .remove();
+      });
+    }
 
-		//去除checkbox列的排序按钮
-		$("#datatable_col_reorder thead th input").parent().removeClass().unbind("click");
-		$("#datatable_col_reorder thead th").bind("click", function () {
-			$("#datatable_col_reorder thead th input").parent().removeClass();
-		});
+    //展示输入框内表单的错误信息
+    function showErrInfo(formId, inputName, errInfo) {
+      $("#" + formId + " input[name='" + inputName + "']")
+        .parent()
+        .parent()
+        .addClass("has-error")
+        .append('<span class="help-block err-info"><i class="fa fa-warning"></i>' + errInfo + '</span>');
+    }
 
-		//去除"显示列"中隐藏checkbox列的选项
-		$("button[class='ColVis_Button TableTools_Button ColVis_MasterButton btn btn-default btn-sm']").one("click", function () {
-			setTimeout(function () {
-				$("div[class='ColVis_collection TableTools_collection'] button:first-child").remove();
-			}, 100);
-		});
+    //去除checkbox列的排序按钮
+    $("#datatable_col_reorder thead th input").parent().removeClass().unbind("click");
+    $("#datatable_col_reorder thead th").bind("click", function () {
+      $("#datatable_col_reorder thead th input").parent().removeClass();
+    });
 
-		//利润计算
-		$(".profit").attr("disabled", "disabled");
+    //去除"显示列"中隐藏checkbox列的选项
+    $("button[class='ColVis_Button TableTools_Button ColVis_MasterButton btn btn-default btn-sm']").one("click", function () {
+      setTimeout(function () {
+        $("div[class='ColVis_collection TableTools_collection'] button:first-child").remove();
+      }, 100);
+    });
 
-		$("#addProj .income").blur(function (e) {
-			getProfit("addProj");
-		});
+    //利润计算
+    $(".profit").attr("disabled", "disabled");
 
-		$("#addProj .outcome").blur(function (e) {
-			getProfit("addProj");
-		});
+    $("#addProj .income").blur(function (e) {
+      getProfit("addProj");
+    });
 
-		$("#addProj .otherfee").blur(function (e) {
-			getProfit("addProj");
-		});
+    $("#addProj .outcome").blur(function (e) {
+      getProfit("addProj");
+    });
 
-		$("#addProj .profit").blur(function (e) {
-			getProfit("addProj");
-		});
+    $("#addProj .otherfee").blur(function (e) {
+      getProfit("addProj");
+    });
 
-		$("#editProj .income").blur(function (e) {
-			getProfit("editProj");
-		});
+    $("#addProj .profit").blur(function (e) {
+      getProfit("addProj");
+    });
 
-		$("#editProj .outcome").blur(function (e) {
-			getProfit("editProj");
-		});
+    $("#editProj .income").blur(function (e) {
+      getProfit("editProj");
+    });
 
-		$("#editProj .otherfee").blur(function (e) {
-			getProfit("editProj");
-		});
+    $("#editProj .outcome").blur(function (e) {
+      getProfit("editProj");
+    });
 
-		$("#editProj .profit").blur(function (e) {
-			getProfit("editProj");
-		});
+    $("#editProj .otherfee").blur(function (e) {
+      getProfit("editProj");
+    });
 
-		var getProfit = function (formId) {
-			var income = (function () {
-				if ($("#" + formId + " .income").val() === "") {
-					return 0;
-				} else {
-					return $("#" + formId + " .income").val();
-				}
-			}());
-			var outcome = (function () {
-				if ($("#" + formId + " .outcome").val() === "") {
-					return 0;
-				} else {
-					return $("#" + formId + " .outcome").val();
-				}
-			}());
-			var otherfee = (function () {
-				if ($("#" + formId + " .otherfee").val() === "") {
-					return 0;
-				} else {
-					return $("#" + formId + " .otherfee").val();
-				}
-			}());
-			var result = parseFloat(income) - parseFloat(outcome) - parseFloat(otherfee);
-			if (isNaN(result) === true) {
-				$("#" + formId + " .profit").val("");
-			} else {
-				$("#" + formId + " .profit").val(result);
-			}
-		};
+    $("#editProj .profit").blur(function (e) {
+      getProfit("editProj");
+    });
 
-		//附件上传
-		$(".fileDiv .upload").click(function (e) {
-			e.preventDefault();
+    var getProfit = function (formId) {
+      var income = (function () {
+        if ($("#" + formId + " .income").val() === "") {
+          return 0;
+        } else {
+          return $("#" + formId + " .income").val();
+        }
+      }());
+      var outcome = (function () {
+        if ($("#" + formId + " .outcome").val() === "") {
+          return 0;
+        } else {
+          return $("#" + formId + " .outcome").val();
+        }
+      }());
+      var otherfee = (function () {
+        if ($("#" + formId + " .otherfee").val() === "") {
+          return 0;
+        } else {
+          return $("#" + formId + " .otherfee").val();
+        }
+      }());
+      var result = parseFloat(income) - parseFloat(outcome) - parseFloat(otherfee);
+      if (isNaN(result) === true) {
+        $("#" + formId + " .profit").val("");
+      } else {
+        $("#" + formId + " .profit").val(result);
+      }
+    };
 
-			var fileDiv = $(this).parent();
-			var uploadInfo = fileDiv.find(".uploadInfo");
+    //已选择文件提示
+    $(".fileDiv span").on('change', 'input', (function (e) {
+      e.preventDefault();
+      var fileDiv = $(this).parent().parent();
+      var uploadInfo = fileDiv.find(".uploadInfo");
+      uploadInfo.removeClass("text-warning").text(" ");
+      uploadInfo.addClass("text-warning").text("已选择" + $(this).val() + "请点击上传");
+      //alert($(this).val());
+    }));
 
-			uploadInfo.removeClass("text-warning").text(" ");
+    //附件上传
+    $(".fileDiv .upload").click(function (e) {
+      e.preventDefault();
 
-			var fileElementId = fileDiv.find("input").attr("id");
+      var fileDiv = $(this).parent();
+      var uploadInfo = fileDiv.find(".uploadInfo");
 
-			var fileInfo = {};
-			fileInfo.id = $("#tab1-edit  input[name='_id']").val();
-			fileInfo.file = fileDiv.find("input").attr("name");
-			fileInfo.fileName = fileDiv.find(".fileName").attr("name");
+      uploadInfo.removeClass("text-warning").text(" ");
 
-			if (fileDiv.find("input").val() === "") {
-				uploadInfo.addClass("text-warning").text("上传的文件不能为空");
-				return;
-			}
+      var fileElementId = fileDiv.find("input").attr("id");
 
-			uploadInfo.text("上传中...");
+      var fileInfo = {};
+      fileInfo.id = $("#editProj input[name='_id']").val();
+      fileInfo.file = fileDiv.find("input").attr("name");
+      fileInfo.fileName = fileDiv.find(".fileName").attr("name");
 
-			$.ajaxFileUpload(
-					{
-						url: '/netproj/upload',
-						secureuri: false,
-						fileElementId: fileElementId,
-						data: fileInfo,
-						dataType: 'json',
-						success: function (result) {
-							console.log(result);
-							if (result.success === true) {
-								//更新当前附件名
-								fileDiv.find(".fileName").text(result.fileNameUploaded);
-								//更新提示字段
-								uploadInfo.text(" ");
-							} else {
-								uploadInfo.addClass("text-warning").text("上传失败，请重试！")
-							}
-						},
-						error: function () {
-							alert("数据存储出错");
-						}
-					})
-		});
+      if (fileDiv.find("input").val() === "") {
+        uploadInfo.addClass("text-warning").text("上传的文件不能为空");
+        return;
+      }
 
-		//附件下载
-		$(".fileDiv .download").click(function (e) {
-			//获取所需下载的文件信息
-			var fileDiv = $(this).parent();
-			var uploadInfo = fileDiv.find(".uploadInfo");
+      uploadInfo.text("上传中...");
 
-			uploadInfo.removeClass("text-warning").text(" ");
+      $.ajaxFileUpload(
+        {
+          url: '/netproj/upload',
+          secureuri: false,
+          fileElementId: fileElementId,
+          data: fileInfo,
+          dataType: 'json',
+          success: function (result) {
+            console.log(result);
+            if (result.success === true) {
+              //更新当前附件名
+              fileDiv.find(".fileName").text(result.fileNameUploaded);
+              //更新提示字段
+              uploadInfo.text(" ");
+            } else {
+              uploadInfo.addClass("text-warning").text("上传失败，请重试！")
+            }
+          },
+          error: function () {
+            alert("数据存储出错");
+          }
+        })
+    });
 
-			var fileInfo = {};
-			fileInfo.id = $("#tab1-edit  input[name='_id']").val();
-			fileInfo.file = fileDiv.find("input").attr("name");
-			fileInfo.fileName = fileDiv.find(".fileName").attr("name");
+    //附件下载
+    $(".fileDiv .download").click(function (e) {
+      //获取所需下载的文件信息
+      var fileDiv = $(this).parent();
+      var uploadInfo = fileDiv.find(".uploadInfo");
 
-			if (fileDiv.find(".fileName").text() === "无") {
-				uploadInfo.addClass("text-warning").text("文件不存在，请先上传！")
-				return;
-			}
+      uploadInfo.removeClass("text-warning").text(" ");
 
-			$(this).attr("href", ("/netproj/downloadAttachment?id=" + $("#tab1-edit  input[name='_id']").val() + "&file=" + fileDiv.find("input").attr("name")));
+      var fileInfo = {};
+      fileInfo.id = $("#editProj input[name='_id']").val();
+      fileInfo.file = fileDiv.find("input").attr("name");
+      fileInfo.fileName = fileDiv.find(".fileName").attr("name");
 
-			$(this).trigger("click");
-		});
+      if (fileDiv.find(".fileName").text() === "无") {
+        uploadInfo.addClass("text-warning").text("文件不存在，请先上传！")
+        return;
+      }
 
-	})
+      $(this).attr("href", ("/netproj/downloadAttachment?id=" + $("#tab1-edit  input[name='_id']").val() + "&file=" + fileDiv.find("input").attr("name")));
+
+      $(this).trigger("click");
+    });
+
+    //禁用Enter键表单自动提交
+    document.onkeydown = function (event) {
+      var target, code, tag;
+      if (!event) {
+        event = window.event; //针对ie浏览器
+        target = event.srcElement;
+        code = event.keyCode;
+        if (code == 13) {
+          tag = target.tagName;
+          if (tag == "TEXTAREA") {
+            return true;
+          }
+          else {
+            return false;
+          }
+        }
+      }
+      else {
+        target = event.target; //针对遵循w3c标准的浏览器，如Firefox
+        code = event.keyCode;
+        if (code == 13) {
+          tag = target.tagName;
+          if (tag == "INPUT") {
+            return false;
+          }
+          else {
+            return true;
+          }
+        }
+      }
+    };
+
+    //向修改信息框中显示已有的信息
+    function initEditFun() {
+      $(".edit").click(function () {
+        //获取项目id
+        var projToEdit = {};
+        projToEdit.id = $(this).attr("data-projId");
+        $.ajax({
+          type: "POST",
+          url: "/netproj/getById",
+          contentType: 'application/json',
+          data: JSON.stringify(projToEdit),
+          dataType: "json",
+          success: function (engproj) {
+            if (engproj !== null) {
+              $("#editProj input[name='_id']").val(engproj._id);
+              //basicInfo
+              $("#tab1-edit  input").each(function () {
+                var inputName = $(this).attr("name");
+                if (inputName === "_id") {
+                  $(this).val(engproj._id);
+                } else {
+                  $(this).val(engproj.basicInfo[inputName]);
+                }
+              });
+              $("#tab1-edit  select").each(function () {
+                var selectName = $(this).attr("name");
+                $(this).val(engproj.basicInfo[selectName]);
+              });
+              $("#tab1-edit  textarea").each(function () {
+                var textareaName = $(this).attr("name");
+                $(this).val(engproj.basicInfo[textareaName]);
+              });
+              //materialInfo
+              $("#tab2-edit  input").each(function () {
+                var inputName = $(this).attr("name");
+                $(this).val(engproj.incomeInfo[inputName]);
+              });
+              $("#tab2-edit  select").each(function () {
+                var selectName = $(this).attr("name");
+                $(this).val(engproj.incomeInfo[selectName]);
+              });
+              $("#tab2-edit  textarea").each(function () {
+                var textareaName = $(this).attr("name");
+                $(this).val(engproj.incomeInfo[textareaName]);
+              });
+              //附件
+              $(".fileDiv .fileName").each(function () {
+                var filename = $(this).attr("name");
+                $(this).text(engproj.fileInfo[filename]);
+              });
+            } else {
+              alert("获取项目信息失败");
+            }
+          }
+        })
+      });
+
+    }
+
+    //向修改信息框中显示已有的信息功能初始化
+    initEditFun();
+    //切换分页时重新初始化功能
+    $(".pagination a").click(function (e) {
+      setTimeout(initEditFun, 100);
+    });
+
+    /* $(".pagination a:first").click(function (e) {
+     setTimeout(initEditFun,100);
+     });
+     $(".pagination a:last").click(function (e) {
+     setTimeout(initEditFun,100);
+     });*/
+
+  })
 
 </script>
 
